@@ -65,7 +65,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
 
     try {
       // If URL is not valid or placeholder, simulate success
-      if (GAS_URL.includes('REPLACE_THIS')) {
+      if (GAS_URL.includes('https://script.google.com/macros/s/AKfycbwi0Fu0gmyQDu7hDaR8N_8dfXxU-ZVvyKK7mhIyTQgxyUMlMFLKbi54Cwohsbl2iJ8/exec')) {
         await new Promise(resolve => setTimeout(resolve, 1200))
         setLoading(false)
         setSubmitted(true)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useSearchParams } from 'react-router-dom'
 import OpeningScreen      from './components/OpeningScreen'
 import BackgroundMusic    from './components/BackgroundMusic'
@@ -6,8 +6,10 @@ import HeroSection        from './components/sections/HeroSection'
 import EventGallerySection   from './components/sections/EventGallerySection'
 import VenueDresscodeSection from './components/sections/VenueDresscodeSection'
 import RSVPSection        from './components/sections/RSVPSection'
+import GuestbookSection   from './components/sections/GuestbookSection'
 import useScrollAnimation from './hooks/useScrollAnimation'
 import eventData from './data/event.json'
+import { GAS_URL } from './config'
 import './index.css'
 
 /* Footer */
@@ -23,14 +25,15 @@ function SiteFooter() {
 }
 
 /* Main content — hook runs here so IntersectionObserver sees the DOM elements */
-function MainContent({ guestName }) {
+function MainContent({ guestId, guestInfo, wishes }) {
   useScrollAnimation()
   return (
     <main id="main-content" className="main-content" tabIndex={-1}>
       <HeroSection />
       <EventGallerySection />
       <VenueDresscodeSection />
-      <RSVPSection guestName={guestName} />
+      <RSVPSection guestId={guestId} guestInfo={guestInfo} />
+      <GuestbookSection wishes={wishes} />
       <SiteFooter />
     </main>
   )
@@ -40,8 +43,44 @@ function MainContent({ guestName }) {
 function InvitationPage() {
   const [showContent, setShowContent] = useState(false)
   const [isOpened, setIsOpened] = useState(false)
+  
   const [searchParams] = useSearchParams()
-  const guestName = searchParams.get('to') || 'Tamu Undangan'
+  const guestId = searchParams.get('id')
+  const guestNameParam = searchParams.get('to')
+  
+  // State for data fetched from GAS
+  const [guestInfo, setGuestInfo] = useState(null)
+  const [wishes, setWishes] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        if (GAS_URL.includes('REPLACE_THIS')) {
+          return // Mock data or skip if URL is invalid
+        }
+
+        // Fetch guest info if ID is present
+        if (guestId) {
+          const guestRes = await fetch(`${GAS_URL}?action=getGuest&id=${guestId}`)
+          const guestData = await guestRes.json()
+          if (guestData.status === 'success') {
+            setGuestInfo(guestData)
+          }
+        }
+
+        // Fetch wishes
+        const wishesRes = await fetch(`${GAS_URL}?action=getWishes`)
+        const wishesData = await wishesRes.json()
+        if (wishesData.status === 'success') {
+          setWishes(wishesData.data)
+        }
+      } catch (err) {
+        console.error("Failed to fetch initial data", err)
+      }
+    }
+    
+    fetchData()
+  }, [guestId])
 
   const handleOpen = () => {
     setIsOpened(true)
@@ -49,13 +88,17 @@ function InvitationPage() {
     setTimeout(() => setShowContent(true), 900)
   }
 
+  // Use the name from the URL immediately so there's no loading delay.
+  // If not in URL, fallback to the one from GAS, or 'Tamu Undangan'.
+  const displayName = guestNameParam || (guestInfo ? guestInfo.name : 'Tamu Undangan')
+
   return (
     <>
       {/* Opening screen — kept in DOM until content is ready */}
-      {!showContent && <OpeningScreen onOpen={handleOpen} guestName={guestName} />}
+      {!showContent && <OpeningScreen onOpen={handleOpen} guestName={displayName} />}
 
       {/* Invitation content */}
-      {showContent && <MainContent guestName={guestName} />}
+      {showContent && <MainContent guestId={guestId} guestInfo={guestInfo} wishes={wishes} />}
 
       {/* Invisible auto-playing background music */}
       <BackgroundMusic isPlaying={isOpened} />
