@@ -1,38 +1,26 @@
 [
   {
     "id": 1,
-    "src": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
-    "alt": "Interior restoran La Maison Dorée — ruang makan utama",
-    "caption": "Ruang Makan Utama"
+    "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
+    "alt": "Kenangan Indah 1",
+    "caption": "Momen tak terlupakan"
   },
   {
     "id": 2,
-    "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80",
-    "alt": "Sajian signature dish La Maison Dorée",
-    "caption": "Signature Dish"
+    "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+    "alt": "Kenangan Indah 2",
+    "caption": "Kebersamaan yang hangat"
   },
   {
     "id": 3,
-    "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80",
-    "alt": "Suasana malam di La Maison Dorée",
-    "caption": "Suasana Malam"
+    "src": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80",
+    "alt": "Kenangan Indah 3",
+    "caption": "Canda tawa bersama"
   },
   {
     "id": 4,
-    "src": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=900&q=80",
-    "alt": "Sajian kuliner pilihan",
-    "caption": "Kuliner Pilihan"
-  },
-  {
-    "id": 5,
-    "src": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=900&q=80",
-    "alt": "Bar dan lounge La Maison Dorée",
-    "caption": "The Lounge"
-  },
-  {
-    "id": 6,
-    "src": "https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80",
-    "alt": "Momen perayaan di La Maison Dorée",
-    "caption": "Momen Perayaan"
+    "src": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
+    "alt": "Kenangan Indah 4",
+    "caption": "Perjalanan yang berharga"
   }
 ]

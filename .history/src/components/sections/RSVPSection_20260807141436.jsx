@@ -54,7 +54,38 @@ export default function RSVPSection({ guestName }) {
     try {
       // API Endpoint URL (Google Apps Script)
       // PLEASE REPLACE WITH YOUR DEPLOYED GAS URL
-      const GAS_URL = 'https://script.google.com/macros/s/AKfycbyboX52uzOCVtYRoHcH7VqceongWAD4R3f6ISscnfZL6kGyS-IYhJmxJjji-RcreHo/exec' 
+      const GAS_URL = 'function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  try {
+    var data = JSON.parse(e.postData.contents);
+    
+    // Tambah baris
+    sheet.appendRow([
+      data.nama, 
+      data.statusKehadiran, 
+      "", // Kolom Status Onsite Kehadiran dikosongkan dahulu
+      data.jumlahTamu,
+      data.message
+    ]);
+    
+    // Ambil baris yang baru saja ditambahkan
+    var lastRow = sheet.getLastRow();
+    var statusCell = sheet.getRange(lastRow, 2); // Kolom B: Status Kehadiran
+    
+    // Jika status mengandung kata "Telat", ubah warna font jadi merah
+    if (data.statusKehadiran && data.statusKehadiran.indexOf("(Telat)") !== -1) {
+      statusCell.setFontColor("red");
+    } else {
+      statusCell.setFontColor("black"); // Normal
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({ "status": "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(error) {
+    return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}' 
       
       // If URL is not valid or placeholder, simulate success
       if (GAS_URL.includes('REPLACE_THIS')) {
@@ -66,24 +97,19 @@ export default function RSVPSection({ guestName }) {
 
       const response = await fetch(GAS_URL, {
         method: 'POST',
+        mode: 'no-cors', // Because GAS might block standard CORS without specific headers
         headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
       })
 
-      const result = await response.json()
-      console.log('GAS Result:', result)
-      
-      if (result.status === 'error') {
-        throw new Error(result.message)
-      }
-
+      // Since mode is no-cors, response is opaque. We assume success if no error thrown.
       setLoading(false)
       setSubmitted(true)
     } catch (err) {
       console.error('Error submitting RSVP:', err)
-      setError('Terjadi kesalahan saat mengirim RSVP: ' + err.message)
+      setError('Terjadi kesalahan saat mengirim RSVP. Silakan coba lagi.')
       setLoading(false)
     }
   }

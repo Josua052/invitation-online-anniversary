@@ -54,7 +54,7 @@ export default function RSVPSection({ guestName }) {
     try {
       // API Endpoint URL (Google Apps Script)
       // PLEASE REPLACE WITH YOUR DEPLOYED GAS URL
-      const GAS_URL = 'https://script.google.com/macros/s/AKfycbyboX52uzOCVtYRoHcH7VqceongWAD4R3f6ISscnfZL6kGyS-IYhJmxJjji-RcreHo/exec' 
+      const GAS_URL = 'https://script.google.com/macros/s/AKfycbxTlcqAu2KBVNbpw36edyl0F-bwWCDIOUAhfnY0m0TJLZ5zcI4T7F3P8sh0BO9i_CI/exec' 
       
       // If URL is not valid or placeholder, simulate success
       if (GAS_URL.includes('REPLACE_THIS')) {
@@ -66,24 +66,19 @@ export default function RSVPSection({ guestName }) {
 
       const response = await fetch(GAS_URL, {
         method: 'POST',
+        mode: 'no-cors', // Because GAS might block standard CORS without specific headers
         headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
       })
 
-      const result = await response.json()
-      console.log('GAS Result:', result)
-      
-      if (result.status === 'error') {
-        throw new Error(result.message)
-      }
-
+      // Since mode is no-cors, response is opaque. We assume success if no error thrown.
       setLoading(false)
       setSubmitted(true)
     } catch (err) {
       console.error('Error submitting RSVP:', err)
-      setError('Terjadi kesalahan saat mengirim RSVP: ' + err.message)
+      setError('Terjadi kesalahan saat mengirim RSVP. Silakan coba lagi.')
       setLoading(false)
     }
   }

@@ -11,7 +11,7 @@ const PARTICLES = Array.from({ length: 24 }, (_, i) => ({
   opacity: 0.12 + (i % 5) * 0.05,
 }))
 
-export default function OpeningScreen({ onOpen }) {
+export default function OpeningScreen({ onOpen, guestName }) {
   const [phase, setPhase] = useState('idle') // idle | cracking | opening
 
   const handleSealClick = useCallback(() => {
@@ -61,10 +61,14 @@ export default function OpeningScreen({ onOpen }) {
           <span className="ornament-line" />
         </div>
 
-        {/* Restaurant name — faint backdrop */}
-        <p className="restaurant-name-bg" aria-hidden="true">
-          {eventData.restaurantName}
-        </p>
+        {/* Guest Greeting */}
+        <div className="guest-greeting" style={{ textAlign: 'center', marginBottom: '10px' }}>
+          <p style={{ fontSize: '14px', color: 'var(--taupe)', marginBottom: '4px' }}>Kepada Yth.</p>
+          <p style={{ fontSize: '12px', color: 'var(--ivory-dim)', marginBottom: '8px' }}>Bapak/Ibu/Saudara/i</p>
+          <h2 style={{ fontSize: '24px', fontFamily: 'var(--font-display)', color: 'var(--champagne)' }}>
+            {guestName}
+          </h2>
+        </div>
 
         {/* Wax Seal */}
         <div
@@ -104,3 +108,4 @@ export default function OpeningScreen({ onOpen }) {
     </div>
   )
 }
+

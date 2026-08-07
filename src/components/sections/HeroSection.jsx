@@ -1,5 +1,6 @@
 import { IconCalendarEvent, IconClock, IconMapPin, IconChevronDown } from '@tabler/icons-react'
 import GoldDivider from '../GoldDivider'
+import Countdown from '../Countdown'
 import eventData from '../../data/event.json'
 
 export default function HeroSection() {
@@ -22,6 +23,9 @@ export default function HeroSection() {
 
       {/* Main content */}
       <div className="hero-content">
+
+        {/* Countdown */}
+        <Countdown />
 
         {/* Tagline label */}
         <p className="hero-tagline">
