@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "nameLabel": "Nama Anda",
+    "namePlaceholder": "Tulis nama lengkap Anda",
+    "guestLabel": "Jumlah Tamu",
+    "attendLabel": "Hadir",
+    "notAttendLabel": "Tidak Bisa Hadir",
+    "messageLabel": "Kirim Ucapan",
+    "messagePlaceholder": "Tuliskan ucapan selamat atau doa untuk La Maison Dorée (opsional)...",
+    "submitLabel": "Kirim RSVP",
+    "submittingLabel": "Mengirim..."
+  },
+  "confirmation": {
+    "title": "Terima Kasih!",
+    "messageAttend": "Kami sangat senang menyambut Anda. Sampai jumpa di malam perayaan yang tak terlupakan.",
+    "messageNotAttend": "Terima kasih atas konfirmasi Anda. Kami sangat menghargai kehadiran hati Anda meski tidak bisa bersama kami.",
+    "calendarLabel": "Tambah ke Kalender",
+    "calendarUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=La+Maison+Dor%C3%A9e+10th+Anniversary&dates=20260920T120000Z/20260920T150000Z&details=Anniversary+Dinner+La+Maison+Dor%C3%A9e&location=Grand+Ballroom+Dharmawangsa+Jakarta"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Dresscode",
+  "description": "Black Tie & Deep Jewel Tones",
+  "subdescription": "Kami mengundang Anda untuk hadir dengan busana elegan yang merayakan keanggunan malam ini.",
+  "swatches": [
+    { "name": "Midnight Black", "hex": "#1A1A1A" },
+    { "name": "Deep Navy", "hex": "#1B2A4A" },
+    { "name": "Burgundy", "hex": "#7A1F2B" },
+    { "name": "Forest Emerald", "hex": "#1C4A3A" },
+    { "name": "Aged Gold", "hex": "#C9A24B" }
+  ],
+  "notes": "Mohon hindari warna putih penuh dan motif ramai. Sepatu formal dianjurkan."
+}
