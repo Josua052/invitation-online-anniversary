@@ -557,48 +557,167 @@ input, textarea {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: 40px 24px;
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
-}
-
-.hero-tagline-group {
-  margin-bottom: 8px; /* Dekat dengan logo */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+}
+
+/* ── Pepatraan Border ── */
+.papatran-border {
+  width: min(480px, 90vw);
+  color: var(--brass);
+  opacity: 0.7;
+  margin: 8px 0;
+}
+
+/* ── Lotus Ornament ── */
+.lotus-ornament {
+  width: min(220px, 70vw);
+  color: var(--brass);
+  margin: 4px 0 -4px;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(147,123,22,0.5));
+}
+
+/* ── Logo Wrapper ── */
+.hero-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 32px;
+  position: relative;
+}
+
+.hero-logo-wrapper::before,
+.hero-logo-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brass));
+  opacity: 0.6;
+}
+.hero-logo-wrapper::before { right: calc(50% + 210px); background: linear-gradient(to left, transparent, var(--brass)); }
+.hero-logo-wrapper::after  { left:  calc(50% + 210px); }
+
+.hero-logo-img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  filter: drop-shadow(0 0 24px rgba(147,123,22,0.35)) drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+  transition: filter 0.4s ease;
+}
+.hero-logo-img:hover {
+  filter: drop-shadow(0 0 36px rgba(147,123,22,0.55)) drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+}
+
+/* ── Countdown wrapper ── */
+.hero-countdown-wrapper {
+  margin-top: 8px;
+  padding: 16px 32px;
+  border: 1px solid rgba(147,123,22,0.25);
+  background: rgba(21,18,15,0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 2px;
+  box-shadow: 0 0 30px rgba(147,123,22,0.1), inset 0 0 30px rgba(0,0,0,0.2);
+}
+
+/* ── Floating Petals ── */
+.petals-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -20px;
+  border-radius: 50% 0 50% 0;
+  background: radial-gradient(circle at 40% 40%, rgba(201,162,75,0.7), rgba(201,100,60,0.4));
+  animation: petalFall linear infinite;
+  box-shadow: 0 0 4px rgba(201,162,75,0.4);
+}
+
+@keyframes petalFall {
+  0%   { transform: translateY(-20px) rotate(0deg) translateX(0);   opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(105vh) rotate(540deg) translateX(60px); opacity: 0; }
+}
+
+/* ── Gold Dust ── */
+.gold-dust {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dust-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(232,199,126,0.9);
+  animation: dustSparkle ease-in-out infinite;
+  box-shadow: 0 0 4px rgba(232,199,126,0.8);
+}
+
+@keyframes dustSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50%       { opacity: 1; transform: scale(1.2); }
+}
+
+.hero-tagline-group {
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
   opacity: 0;
-  animation: fadeSlideUp 0.8s 0.2s ease forwards;
+  animation: fadeSlideUp 0.8s 0.3s ease forwards;
 }
 
 .hero-tagline-text-large {
   font-family: var(--font-body);
-  font-size: clamp(20px, 4vw, 32px);
-  font-weight: 500;
-  letter-spacing: 0.35em;
+  font-size: clamp(16px, 3.5vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: var(--taupe);
-  line-height: 1.2;
+  color: var(--ivory);
+  line-height: 1.3;
+  text-shadow: 0 0 20px rgba(232,199,126,0.3);
 }
 
 .hero-tagline-text-small {
   font-family: var(--font-body);
-  font-size: clamp(12px, 2vw, 16px);
-  font-weight: 500;
-  letter-spacing: 0.35em;
+  font-size: clamp(10px, 1.8vw, 14px);
+  font-weight: 400;
+  letter-spacing: 0.6em;
   text-transform: uppercase;
-  color: var(--taupe);
-  line-height: 1;
+  color: var(--brass);
+  line-height: 1.4;
 }
 
 .hero-tagline-number {
   font-family: var(--font-display);
-  font-size: clamp(64px, 12vw, 100px);
+  font-size: clamp(72px, 14vw, 120px);
   font-weight: normal;
   color: var(--gold);
-  line-height: 1;
+  line-height: 0.9;
+  text-shadow:
+    0 0 40px rgba(201,162,75,0.6),
+    0 0 80px rgba(201,162,75,0.25),
+    0 2px 8px rgba(0,0,0,0.8);
+  background: linear-gradient(180deg, #F0D080 0%, #C9A24B 45%, #8A6510 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-restaurant-name {
