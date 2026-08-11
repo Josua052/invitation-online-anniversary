@@ -563,16 +563,42 @@ input, textarea {
   margin: 0 auto;
 }
 
-.hero-tagline {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin-bottom: 20px;
+.hero-tagline-group {
+  margin-bottom: 8px; /* Dekat dengan logo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   opacity: 0;
   animation: fadeSlideUp 0.8s 0.2s ease forwards;
+}
+
+.hero-tagline-text-large {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  line-height: 1.2;
+}
+
+.hero-tagline-text-small {
+  font-family: var(--font-body);
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  line-height: 1;
+}
+
+.hero-tagline-number {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 12vw, 100px);
+  font-weight: normal;
+  color: var(--gold);
+  line-height: 1;
 }
 
 .hero-restaurant-name {
@@ -1418,12 +1444,12 @@ textarea.form-input {
   background: var(--noir);
 }
 
-.footer-name {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 20px;
-  color: var(--brass);
-  margin-bottom: 6px;
+.footer-logo {
+  display: block;
+  margin: 0 auto 12px auto;
+  height: 50px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-note {
@@ -1707,7 +1733,6 @@ textarea.form-input {
   object-fit: cover;
   z-index: -1;
 }
-
 /* Google Drive Video Background */
 .drive-video-wrapper {
   position: fixed;
@@ -1719,20 +1744,22 @@ textarea.form-input {
   z-index: 0;
 }
 
-/* 
-  Vertical (9:16) video filling a horizontal (16:9) screen:
-  - Set width = 100vw
-  - Height must be 100vw * (16/9) to maintain aspect ratio = 177.78vw
-  - This makes iframe MUCH taller than viewport, so Drive control bar
-    at the bottom of the iframe is pushed far below visible area
-  - overflow:hidden on wrapper clips it cleanly
+/*
+  Strategy: make the iframe 2× the viewport height.
+  Google Drive places controls at the TOP and BOTTOM of the player.
+  By centering a 200vh iframe, the top controls sit at -50vh (above viewport)
+  and the bottom controls sit at +50vh (below viewport).
+  overflow:hidden on the wrapper clips everything outside the screen.
+  This works on both desktop (landscape) and mobile (portrait).
 */
 .drive-video-iframe {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100vw;
-  height: 177.78vw;   /* 100vw * 16/9 — fills width, crops top/bottom */
+  /* Width = 200vh * (9/16) = 112.5vh — enough to fill screen in portrait */
+  /* Also ensure it fills full vw in landscape */
+  width: max(100vw, 112.5vh);
+  height: 200vh;
   transform: translate(-50%, -50%);
   border: none;
   pointer-events: none;

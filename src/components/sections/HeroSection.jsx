@@ -24,16 +24,15 @@ export default function HeroSection() {
       {/* Main content */}
       <div className="hero-content">
 
-        {/* Countdown */}
-        <Countdown />
-
-        {/* Tagline label */}
-        <p className="hero-tagline">
-          Undangan Anniversary
-        </p>
+        {/* Tagline label stacked */}
+        <div className="hero-tagline-group">
+          <p className="hero-tagline-text-large">Anniversary</p>
+          <p className="hero-tagline-text-small">ke</p>
+          <p className="hero-tagline-number">57</p>
+        </div>
 
         {/* Restaurant Logo */}
-        <div style={{ display: 'flex', justifyContent: 'center', margin: '32px 0' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 48px 0' }}>
           <img 
             src="/logo/Logo Dengan Buaya (1).png" 
             alt={eventData.restaurantName} 
@@ -42,22 +41,9 @@ export default function HeroSection() {
           />
         </div>
 
-        <GoldDivider />
+        {/* Countdown */}
+        <Countdown />
 
-        {/* Event info row */}
-        <div className="hero-info-row">
-          <div className="hero-info-item">
-            <IconCalendarEvent size={18} stroke={1.5} aria-hidden="true" />
-            <span>{eventData.date}</span>
-          </div>
-
-          <span className="hero-separator" aria-hidden="true">◆</span>
-
-          <div className="hero-info-item">
-            <IconClock size={18} stroke={1.5} aria-hidden="true" />
-            <span>{eventData.time}</span>
-          </div>
-        </div>
       </div>
 
       {/* Scroll hint */}

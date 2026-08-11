@@ -17,7 +17,7 @@ import './index.css'
 function SiteFooter() {
   return (
     <footer className="site-footer" role="contentinfo">
-      <p className="footer-name">{eventData.restaurantName}</p>
+      <img src="/logo/Logo Dengan Buaya (1).png" alt={eventData.restaurantName} className="footer-logo" />
       <p className="footer-note">
         © {new Date().getFullYear()} — Undangan Digital Anniversary ke-{eventData.years} Tahun
       </p>
