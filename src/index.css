@@ -410,16 +410,11 @@ input, textarea {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  background: rgba(21, 18, 15, 0.5);
 }
 
 .hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: scale(1.05);
-  animation: heroZoom 20s ease-in-out infinite alternate;
+  display: none;
 }
 
 @keyframes heroZoom {
@@ -428,15 +423,7 @@ input, textarea {
 }
 
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(21, 18, 15, 0.55) 0%,
-    rgba(21, 18, 15, 0.3)  30%,
-    rgba(21, 18, 15, 0.3)  70%,
-    rgba(21, 18, 15, 0.75) 100%
-  );
+  display: none;
 }
 
 .candle-glow {
@@ -560,8 +547,8 @@ input, textarea {
 .hero-scroll-hint {
   position: absolute;
   bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -571,7 +558,9 @@ input, textarea {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   animation: hintBounce 2s ease-in-out infinite, fadeSlideUp 1s 1.5s ease both;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 10;
 }
 
 .hero-scroll-hint svg {
@@ -617,7 +606,7 @@ input, textarea {
 
 /* ── 10. EVENT + GALLERY SECTION ── */
 .event-gallery-section {
-  background: linear-gradient(180deg, var(--noir) 0%, var(--noir-light) 100%);
+  background: transparent;
 }
 
 .event-gallery-grid {
@@ -669,32 +658,45 @@ input, textarea {
   color: var(--ivory-dim);
 }
 
-/* Gallery Carousel */
+/* Cinematic Gallery Slideshow */
 .gallery-carousel {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: var(--border-gold);
-  background: var(--noir-mid);
+  background: transparent;
   aspect-ratio: 4/3;
 }
 
 .gallery-track {
-  display: flex;
+  position: relative;
+  width: 100%;
   height: 100%;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .gallery-slide {
-  min-width: 100%;
-  height: 100%;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s;
+}
+
+.gallery-slide.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .gallery-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1);
+  transition: transform 6s linear;
+}
+
+.gallery-slide.active img {
+  transform: scale(1.08); /* Cinematic slow zoom */
 }
 
 .gallery-slide-caption {
@@ -709,63 +711,9 @@ input, textarea {
   letter-spacing: 0.1em;
 }
 
-.gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(21, 18, 15, 0.7);
-  border: var(--border-gold);
-  color: var(--brass);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(8px);
-  transition: var(--transition);
-  z-index: 2;
-}
-
-.gallery-arrow:hover {
-  background: rgba(201, 162, 75, 0.15);
-  color: var(--champagne);
-}
-
-.gallery-arrow-prev { left: 12px; }
-.gallery-arrow-next { right: 12px; }
-
-.gallery-dots {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 6px;
-  z-index: 2;
-}
-
-.gallery-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ivory);
-  opacity: 0.35;
-  transition: var(--transition);
-  cursor: pointer;
-  border: none;
-  padding: 0;
-}
-
-.gallery-dot.active {
-  opacity: 1;
-  background: var(--brass);
-  transform: scale(1.3);
-}
-
 /* ── 11. VENUE + DRESSCODE SECTION ── */
 .venue-dresscode-section {
-  background: var(--noir-mid);
+  background: rgba(21, 18, 15, 0.5);
 }
 
 .venue-dresscode-grid {
@@ -1412,4 +1360,96 @@ textarea.form-input {
 }
 .spinner {
   width: 40px; height: 40px; border: 3px solid rgba(201, 162, 75, 0.2); border-top-color: var(--brass); border-radius: 50%; animation: spin 1s linear infinite;
+}
+/* -- VIDEO BACKGROUND -- */
+.video-background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+}
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 18, 15, 0.7);
+}
+.rsvp-section { background: rgba(21, 18, 15, 0.4); }
+.guestbook-section { background: rgba(21, 18, 15, 0.8); }
+/* -- 15. BALINESE ORNAMENT -- */
+.balinese-ornament {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: drop-shadow(0 0 10px rgba(147, 123, 22, 0.4));
+}
+
+.balinese-ornament.left {
+  left: 12px;
+  animation: floatOrnamentLeft 8s ease-in-out infinite alternate;
+}
+
+.balinese-ornament.right {
+  right: 12px;
+  transform: scaleX(-1);
+  animation: floatOrnamentRight 9s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrnamentLeft {
+  0% { transform: translateY(-10px); }
+  100% { transform: translateY(10px); }
+}
+
+@keyframes floatOrnamentRight {
+  0% { transform: scaleX(-1) translateY(10px); }
+  100% { transform: scaleX(-1) translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  .balinese-ornament {
+    width: 20px;
+    opacity: 0.35;
+  }
+  .balinese-ornament.left { left: 4px; }
+  .balinese-ornament.right { right: 4px; }
+}
+/* -- YOUTUBE BACKGROUND -- */
+.youtube-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.3); /* Scale slightly to hide edges/branding */
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .youtube-bg {
+    width: 100vw;
+    height: 56.25vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .youtube-bg {
+    width: 177.78vh;
+    height: 100vh;
+  }
+}
+
+/* Vertical video specific scaling */
+@media (min-aspect-ratio: 1/1) {
+  .youtube-vertical {
+    transform: translate(-50%, -50%) scale(3.2); /* Massive zoom to fit vertical 9:16 video into horizontal 16:9 screen */
+  }
 }

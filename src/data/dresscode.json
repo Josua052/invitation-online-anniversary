@@ -1,13 +1,13 @@
 {
   "title": "Dresscode",
-  "description": "Black Tie & Deep Jewel Tones",
-  "subdescription": "Kami mengundang Anda untuk hadir dengan busana elegan yang merayakan keanggunan malam ini.",
+  "description": "Come dressed in your favorite Flower Power style.",
+  "subdescription": "Celebrate the anniversary by bringing the vibrant, colorful energy of the late 60s and 70s.",
   "swatches": [
-    { "name": "Midnight Black", "hex": "#1A1A1A" },
-    { "name": "Deep Navy", "hex": "#1B2A4A" },
-    { "name": "Burgundy", "hex": "#7A1F2B" },
-    { "name": "Forest Emerald", "hex": "#1C4A3A" },
-    { "name": "Aged Gold", "hex": "#C9A24B" }
+    { "name": "Sunset Orange", "hex": "#FF7F3F" },
+    { "name": "Retro Mustard", "hex": "#DDA72D" },
+    { "name": "Hippie Pink", "hex": "#E86A92" },
+    { "name": "Olive Leaf", "hex": "#5A6E3B" },
+    { "name": "Sky Blue", "hex": "#76B4D6" }
   ],
-  "notes": "Mohon hindari warna putih penuh dan motif ramai. Sepatu formal dianjurkan."
+  "notes": "Think floral prints, bright colors, bell-bottoms, and carefree bohemian vibes!"
 }

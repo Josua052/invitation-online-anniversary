@@ -32,10 +32,15 @@ export default function HeroSection() {
           Undangan Anniversary
         </p>
 
-        {/* Restaurant name */}
-        <h1 className="hero-restaurant-name">
-          {eventData.restaurantName}
-        </h1>
+        {/* Restaurant Logo */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+          <img 
+            src="/logo/Logo Dengan Buaya (1).png" 
+            alt={eventData.restaurantName} 
+            className="hero-restaurant-name"
+            style={{ width: '100%', maxWidth: '350px', height: 'auto' }} 
+          />
+        </div>
 
         <GoldDivider />
 
@@ -71,10 +76,10 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <div className="hero-scroll-hint" aria-hidden="true">
+      <a href="#acara" className="hero-scroll-hint" aria-label="Gulir ke bawah">
         <span>Gulir ke bawah</span>
         <IconChevronDown size={16} stroke={2} />
-      </div>
+      </a>
 
     </section>
   )

@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import { IconMapPin, IconExternalLink, IconMap, IconLayout } from '@tabler/icons-react'
 import GoldDivider from '../GoldDivider'
 import venueData     from '../../data/venue.json'
 import dresscodeData from '../../data/dresscode.json'
 
 export default function VenueDresscodeSection() {
-  const [mapView, setMapView] = useState('map') // 'map' | 'floorplan'
 
   return (
     <section id="venue" className="section venue-dresscode-section" aria-label="Venue dan dresscode">
@@ -25,49 +23,15 @@ export default function VenueDresscodeSection() {
               </p>
               <p className="venue-notes">{venueData.notes}</p>
 
-              {/* Map / Floor Plan Toggle */}
-              <div className="venue-map-toggle" role="tablist" aria-label="Tampilan peta">
-                <button
-                  id="venue-map-tab"
-                  className={`map-toggle-btn ${mapView === 'map' ? 'active' : ''}`}
-                  onClick={() => setMapView('map')}
-                  role="tab"
-                  aria-selected={mapView === 'map'}
-                  aria-controls="venue-map-view"
-                >
-                  <IconMap size={15} stroke={1.5} aria-hidden="true" />
-                  Peta
-                </button>
-                <button
-                  id="venue-floorplan-tab"
-                  className={`map-toggle-btn ${mapView === 'floorplan' ? 'active' : ''}`}
-                  onClick={() => setMapView('floorplan')}
-                  role="tab"
-                  aria-selected={mapView === 'floorplan'}
-                  aria-controls="venue-map-view"
-                >
-                  <IconLayout size={15} stroke={1.5} aria-hidden="true" />
-                  Denah
-                </button>
-              </div>
-
-              {/* Map / Floorplan display */}
+              {/* Map display */}
               <div id="venue-map-view" className="venue-map-container" role="tabpanel">
-                {mapView === 'map' ? (
-                  <iframe
-                    src={venueData.mapsEmbed}
-                    title="Peta lokasi venue"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
-                ) : (
-                  <img
-                    src={venueData.floorPlanUrl}
-                    alt="Denah ruangan Grand Ballroom"
-                    loading="lazy"
-                  />
-                )}
+                <iframe
+                  src={venueData.mapsEmbed}
+                  title="Peta lokasi venue"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
 
               {/* Google Maps button */}

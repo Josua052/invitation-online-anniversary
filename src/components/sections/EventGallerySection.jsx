@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   IconCalendarEvent,
   IconClock,
@@ -15,8 +15,13 @@ export default function EventGallerySection() {
   const [current, setCurrent] = useState(0)
   const total = galleryData.length
 
-  const prev = () => setCurrent((c) => (c - 1 + total) % total)
-  const next = () => setCurrent((c) => (c + 1) % total)
+  useEffect(() => {
+    if (total === 0) return
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % total)
+    }, 4500) // 4.5 seconds per slide
+    return () => clearInterval(timer)
+  }, [total])
 
   return (
     <section id="acara" className="section event-gallery-section" aria-label="Tentang acara dan galeri">
@@ -32,9 +37,13 @@ export default function EventGallerySection() {
 
             <GoldDivider />
 
-            <p className="section-subtitle reveal reveal-delay-2">
-              {eventData.welcomeMessage}
-            </p>
+            <div className="section-subtitle reveal reveal-delay-2" style={{ textAlign: 'left', marginBottom: '32px' }}>
+              {Array.isArray(eventData.welcomeMessage)
+                ? eventData.welcomeMessage.map((p, i) => (
+                    <p key={i} style={{ marginBottom: '16px' }}>{p}</p>
+                  ))
+                : <p>{eventData.welcomeMessage}</p>}
+            </div>
 
             <ul className="event-details-list" aria-label="Detail acara">
 
@@ -76,15 +85,11 @@ export default function EventGallerySection() {
             <div className="gallery-carousel" role="region" aria-label="Carousel galeri foto">
 
               {/* Slides track */}
-              <div
-                className="gallery-track"
-                style={{ transform: `translateX(-${current * 100}%)` }}
-                aria-live="polite"
-              >
+              <div className="gallery-track" aria-live="polite">
                 {galleryData.map((photo, idx) => (
                   <div
                     key={photo.id}
-                    className="gallery-slide"
+                    className={`gallery-slide ${idx === current ? 'active' : ''}`}
                     aria-hidden={idx !== current}
                   >
                     <img
@@ -92,41 +97,10 @@ export default function EventGallerySection() {
                       alt={photo.alt}
                       loading={idx === 0 ? 'eager' : 'lazy'}
                     />
-                    <div className="gallery-slide-caption">{photo.caption}</div>
+                    {photo.caption && (
+                      <div className="gallery-slide-caption">{photo.caption}</div>
+                    )}
                   </div>
-                ))}
-              </div>
-
-              {/* Arrows */}
-              <button
-                id="gallery-prev-btn"
-                className="gallery-arrow gallery-arrow-prev"
-                onClick={prev}
-                aria-label="Foto sebelumnya"
-              >
-                <IconChevronLeft size={20} stroke={2} />
-              </button>
-              <button
-                id="gallery-next-btn"
-                className="gallery-arrow gallery-arrow-next"
-                onClick={next}
-                aria-label="Foto berikutnya"
-              >
-                <IconChevronRight size={20} stroke={2} />
-              </button>
-
-              {/* Dot indicators */}
-              <div className="gallery-dots" role="tablist" aria-label="Pilih foto">
-                {galleryData.map((_, idx) => (
-                  <button
-                    key={idx}
-                    id={`gallery-dot-${idx}`}
-                    className={`gallery-dot ${idx === current ? 'active' : ''}`}
-                    onClick={() => setCurrent(idx)}
-                    role="tab"
-                    aria-selected={idx === current}
-                    aria-label={`Foto ${idx + 1}`}
-                  />
                 ))}
               </div>
 

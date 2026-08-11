@@ -7,6 +7,7 @@ import EventGallerySection   from './components/sections/EventGallerySection'
 import VenueDresscodeSection from './components/sections/VenueDresscodeSection'
 import RSVPSection        from './components/sections/RSVPSection'
 import GuestbookSection   from './components/sections/GuestbookSection'
+import BalineseOrnament   from './components/BalineseOrnament'
 import useScrollAnimation from './hooks/useScrollAnimation'
 import eventData from './data/event.json'
 import { GAS_URL } from './config'
@@ -21,6 +22,50 @@ function SiteFooter() {
         © {new Date().getFullYear()} — Undangan Digital Anniversary ke-{eventData.years} Tahun
       </p>
     </footer>
+  )
+}
+
+/* Video Background */
+function VideoBackground() {
+  const driveId = eventData.backgroundDriveId;
+  const youtubeId = eventData.backgroundYoutubeId;
+  const ytFormat = eventData.youtubeVideoFormat || 'horizontal';
+  const ytClass = `youtube-bg ${ytFormat === 'vertical' ? 'youtube-vertical' : ''}`;
+
+  if (youtubeId) {
+    return (
+      <div className="video-background-container" aria-hidden="true">
+        <iframe
+          className={ytClass}
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${youtubeId}&playsinline=1`}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          title="Background Video"
+        ></iframe>
+        <div className="video-overlay" />
+      </div>
+    );
+  }
+
+  const videoSrc = driveId 
+    ? `https://drive.google.com/uc?export=download&id=${driveId}`
+    : "/video/video untuk undangan.mp4";
+
+  return (
+    <div className="video-background-container" aria-hidden="true">
+      <video
+        key={videoSrc}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="video-background"
+      >
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+      <div className="video-overlay" />
+    </div>
   )
 }
 
@@ -98,7 +143,14 @@ function InvitationPage() {
       {!showContent && <OpeningScreen onOpen={handleOpen} guestName={displayName} />}
 
       {/* Invitation content */}
-      {showContent && <MainContent guestId={guestId} guestInfo={guestInfo} wishes={wishes} />}
+      {showContent && (
+        <>
+          <VideoBackground />
+          <BalineseOrnament position="left" />
+          <BalineseOrnament position="right" />
+          <MainContent guestId={guestId} guestInfo={guestInfo} wishes={wishes} />
+        </>
+      )}
 
       {/* Invisible auto-playing background music */}
       <BackgroundMusic isPlaying={isOpened} />

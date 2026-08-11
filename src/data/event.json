@@ -1,14 +1,28 @@
 {
-  "restaurantName": "La Maison Dorée",
-  "tagline": "Satu Dasawarsa Cita Rasa",
-  "years": 10,
-  "romanNumeral": "X",
-  "date": "Sabtu, 20 September 2026",
-  "time": "19.00 – 22.00 WIB",
+  "restaurantName": "Mades Warung",
+  "tagline": "FLOWER POWER",
+  "years": 57,
+  "romanNumeral": "LVII",
+  "date": "Friday, 28 August 2026",
+  "time": "Start 6PM",
   "heroBackground": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80",
-  "welcomeTitle": "Sepuluh Tahun Menghadirkan Keabadian Rasa",
-  "welcomeMessage": "Dengan penuh rasa syukur dan kebanggaan, kami mengundang Anda untuk merayakan satu dasawarsa perjalanan La Maison Dorée — sebuah perjalanan kuliner yang telah menyentuh ribuan hati dan menorehkan kenangan tak terlupakan di setiap meja makan kami.",
+  "welcomeTitle": "OUR HISTORY IS OUR STRENGTH",
+  "welcomeMessage": [
+    "Every legacy begins with a simple story.",
+    "In 1969, Mades Warung began with a dream — to share the warmth of Indonesian food, the richness of Balinese culture, and the genuine hospitality of Bali.",
+    "What started as a humble warung has grown through generations, becoming a place where locals and travelers from around the world come together.",
+    "Over the years, Bali has changed.",
+    "With love and gratitude,",
+    "The Mades Warung Family",
+    "Made’s Warung began like many great stories do, with good food, family, and a lot of heart. In the late 1960s, Kuta was still a quiet fishing village. Locals would gather at a modest roadside stall run by Made’s grandmother, mother, and sisters. There, they shared unfiltered coffee, rice cakes, gossip, and laughter.",
+    "As the first waves of travellers arrived in Bali in the ‘70s—hippies, surfers, and curious wanderers—they brought new tastes and ideas. Ibu Made, the eldest daughter, welcomed them with warmth and curiosity, gently evolving the menu to include jaffles, pancakes, fruit salads, sushi, and more, without ever losing the essence of a true warung.",
+    "Over the years, the warung grew—four renovations in Kuta, Berawa a new flagship in Seminyak, and eventually locations at Bali’s airport, in Jakarta, and even Amsterdam. Through every change, Made’s remained grounded in its philosophy: communal dining, no pretence, and a space where strangers become friends.",
+    "Whether you’re tucking into nasi campur in Seminyak or grabbing sambal for your flight, you’re part of something that started with a family, a village, and a love of sharing meals.",
+    "MADE MASIH"
+  ],
   "openingCta": "Sentuh segel untuk membuka undangan",
-  "sealInitials": "LMD",
-  "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  "sealInitials": "MW",
+  "backgroundDriveId": "",
+  "backgroundYoutubeId": "Yn9gCSzywxE",
+  "youtubeVideoFormat": "vertical"
 }
