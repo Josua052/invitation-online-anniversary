@@ -27,29 +27,6 @@ function SiteFooter() {
 
 /* Video Background */
 function VideoBackground() {
-  const driveId = eventData.backgroundDriveId;
-
-  if (driveId) {
-    return (
-      <div className="video-background-container" aria-hidden="true">
-        <div className="drive-video-wrapper">
-          <iframe
-            src={`https://drive.google.com/file/d/${driveId}/preview?autoplay=1&mute=1`}
-            className="drive-video-iframe"
-            allow="autoplay; encrypted-media"
-            allowFullScreen={false}
-            frameBorder="0"
-            title="Background Video"
-          />
-          {/* Covers entire Drive UI — play button, controls, title bar */}
-          <div className="drive-video-shield" />
-        </div>
-        <div className="video-overlay" />
-      </div>
-    );
-  }
-
-  // Fallback: local MP4
   return (
     <div className="video-background-container" aria-hidden="true">
       <video
@@ -59,7 +36,7 @@ function VideoBackground() {
         playsInline
         className="video-background-native"
       >
-        <source src="/video/video untuk undangan.mp4" type="video/mp4" />
+        <source src="/video/video untuk undangan (1).mp4" type="video/mp4" />
       </video>
       <div className="video-overlay" />
     </div>
