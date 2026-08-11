@@ -6,7 +6,7 @@
 @font-face {
   font-family: 'Tan Nimbus';
   src: url('/fonts/tannimbus.woff2') format('woff2'),
-       url('/fonts/tannimbus.ttf') format('truetype');
+    url('/fonts/tannimbus.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -14,29 +14,29 @@
 
 /* ── 1. CSS VARIABLES ── */
 :root {
-  --noir:         #15120F;
-  --noir-light:   #1E1A15;
-  --noir-mid:     #221E18;
-  --ivory:        #F4ECDD;
-  --ivory-dim:    rgba(244, 236, 221, 0.7);
-  --brass:        #937B16;
-  --brass-dim:    rgba(147, 123, 22, 0.21);
-  --brass-glow:   rgba(147, 123, 22, 0.15);
-  --champagne:    #937B16;
-  --wine:         #7A1F2B;
-  --wine-hover:   #922436;
-  --taupe:        #8B8378;
+  --noir: #15120F;
+  --noir-light: #1E1A15;
+  --noir-mid: #221E18;
+  --ivory: #F4ECDD;
+  --ivory-dim: rgba(244, 236, 221, 0.7);
+  --brass: #937B16;
+  --brass-dim: rgba(147, 123, 22, 0.21);
+  --brass-glow: rgba(147, 123, 22, 0.15);
+  --champagne: #937B16;
+  --wine: #7A1F2B;
+  --wine-hover: #922436;
+  --taupe: #8B8378;
 
   --font-display: 'Tan Nimbus', 'Fraunces', Georgia, serif;
-  --font-body:    'Maven Pro', system-ui, sans-serif;
-  --font-accent:  'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Maven Pro', system-ui, sans-serif;
+  --font-accent: 'Cormorant Garamond', Georgia, serif;
 
-  --radius:       10px;
-  --radius-lg:    16px;
-  --border-gold:  1px solid var(--brass-dim);
-  --shadow-gold:  0 0 30px rgba(147, 123, 22, 0.12);
+  --radius: 10px;
+  --radius-lg: 16px;
+  --border-gold: 1px solid var(--brass-dim);
+  --shadow-gold: 0 0 30px rgba(147, 123, 22, 0.12);
 
-  --transition:   all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -86,8 +86,15 @@ input, textarea {
 }
 
 @keyframes mainFadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── 4. SECTION BASE ── */
@@ -108,14 +115,33 @@ input, textarea {
 }
 
 /* ── 5. TYPOGRAPHY ── */
-.font-display   { font-family: var(--font-display); }
-.font-accent    { font-family: var(--font-accent); }
+.font-display {
+  font-family: var(--font-display);
+}
 
-.text-brass     { color: var(--brass); }
-.text-champagne { color: var(--champagne); }
-.text-taupe     { color: var(--taupe); }
-.text-wine      { color: var(--wine); }
-.text-ivory     { color: var(--ivory); }
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.text-brass {
+  color: var(--brass);
+}
+
+.text-champagne {
+  color: var(--champagne);
+}
+
+.text-taupe {
+  color: var(--taupe);
+}
+
+.text-wine {
+  color: var(--wine);
+}
+
+.text-ivory {
+  color: var(--ivory);
+}
 
 /* ── 6. GOLD DIVIDER ── */
 .gold-divider {
@@ -162,9 +188,20 @@ input, textarea {
 }
 
 @keyframes floatUp {
-  0%   { transform: translateY(0) scale(1);    opacity: 0.35; }
-  50%  { transform: translateY(-40vh) scale(1.2); opacity: 0.15; }
-  100% { transform: translateY(-100vh) scale(0.8); opacity: 0; }
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-40vh) scale(1.2);
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: translateY(-100vh) scale(0.8);
+    opacity: 0;
+  }
 }
 
 /* Split Panels */
@@ -178,11 +215,23 @@ input, textarea {
   transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.panel-top    { top: 0; transform-origin: top center; }
-.panel-bottom { bottom: 0; transform-origin: bottom center; }
+.panel-top {
+  top: 0;
+  transform-origin: top center;
+}
 
-.opening-screen.opening .panel-top    { transform: translateY(-100%); }
-.opening-screen.opening .panel-bottom { transform: translateY(100%); }
+.panel-bottom {
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.opening-screen.opening .panel-top {
+  transform: translateY(-100%);
+}
+
+.opening-screen.opening .panel-bottom {
+  transform: translateY(100%);
+}
 
 /* Center content — must be above the panels (z-index 2) */
 .opening-center {
@@ -209,8 +258,13 @@ input, textarea {
 }
 
 @keyframes namePulse {
-  0%, 100% { opacity: 0.12; }
-  50%       { opacity: 0.22; }
+  0%, 100% {
+    opacity: 0.12;
+  }
+
+  50% {
+    opacity: 0.22;
+  }
 }
 
 /* Wax Seal */
@@ -247,8 +301,15 @@ input, textarea {
 }
 
 @keyframes sealRingPulse {
-  0%, 100% { transform: scale(1);    opacity: 0.6; }
-  50%       { transform: scale(1.04); opacity: 1;   }
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
 }
 
 .wax-seal {
@@ -274,8 +335,13 @@ input, textarea {
 }
 
 @keyframes sealGlow {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(201,162,75,0.18), 0 0 40px rgba(122,31,43,0.6), 0 0 80px rgba(122,31,43,0.25), inset 0 2px 8px rgba(255,255,255,0.08), inset 0 -4px 16px rgba(0,0,0,0.4); }
-  50%       { box-shadow: 0 0 0 5px rgba(201,162,75,0.28), 0 0 60px rgba(122,31,43,0.8), 0 0 120px rgba(122,31,43,0.35), inset 0 2px 8px rgba(255,255,255,0.1), inset 0 -4px 16px rgba(0,0,0,0.4); }
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.18), 0 0 40px rgba(122, 31, 43, 0.6), 0 0 80px rgba(122, 31, 43, 0.25), inset 0 2px 8px rgba(255, 255, 255, 0.08), inset 0 -4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px rgba(201, 162, 75, 0.28), 0 0 60px rgba(122, 31, 43, 0.8), 0 0 120px rgba(122, 31, 43, 0.35), inset 0 2px 8px rgba(255, 255, 255, 0.1), inset 0 -4px 16px rgba(0, 0, 0, 0.4);
+  }
 }
 
 .wax-seal:hover {
@@ -317,12 +383,30 @@ input, textarea {
 }
 
 @keyframes sealCrack {
-  0%   { transform: scale(1) rotate(0deg); }
-  20%  { transform: scale(1.06) rotate(-2deg); }
-  40%  { transform: scale(0.96) rotate(2deg); }
-  60%  { transform: scale(1.08) rotate(-1deg); }
-  80%  { transform: scale(0.98) rotate(1deg); }
-  100% { transform: scale(1.05) rotate(0deg); opacity: 0.7; }
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  20% {
+    transform: scale(1.06) rotate(-2deg);
+  }
+
+  40% {
+    transform: scale(0.96) rotate(2deg);
+  }
+
+  60% {
+    transform: scale(1.08) rotate(-1deg);
+  }
+
+  80% {
+    transform: scale(0.98) rotate(1deg);
+  }
+
+  100% {
+    transform: scale(1.05) rotate(0deg);
+    opacity: 0.7;
+  }
 }
 
 .wax-seal-wrapper.opening .wax-seal {
@@ -330,7 +414,10 @@ input, textarea {
 }
 
 @keyframes sealDissolve {
-  to { transform: scale(0.5); opacity: 0; }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
 .open-cta {
@@ -343,8 +430,13 @@ input, textarea {
 }
 
 @keyframes ctaBlink {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1; }
+  0%, 100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .opening-ornament {
@@ -418,8 +510,13 @@ input, textarea {
 }
 
 @keyframes heroZoom {
-  from { transform: scale(1.05); }
-  to   { transform: scale(1.12); }
+  from {
+    transform: scale(1.05);
+  }
+
+  to {
+    transform: scale(1.12);
+  }
 }
 
 .hero-overlay {
@@ -429,20 +526,33 @@ input, textarea {
 .candle-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 60% 50% at 50% 45%,
-    rgba(201, 162, 75, 0.09) 0%,
-    rgba(232, 199, 126, 0.05) 35%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse 60% 50% at 50% 45%,
+      rgba(201, 162, 75, 0.09) 0%,
+      rgba(232, 199, 126, 0.05) 35%,
+      transparent 70%);
   animation: candleFlicker 5s ease-in-out infinite;
 }
 
 @keyframes candleFlicker {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  25%       { opacity: 1;   transform: scale(1.02); }
-  50%       { opacity: 0.75; transform: scale(0.98); }
-  75%       { opacity: 1;   transform: scale(1.01); }
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(0.98);
+  }
+
+  75% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
 }
 
 .hero-content {
@@ -569,13 +679,25 @@ input, textarea {
 }
 
 @keyframes bounceArrow {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(6px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── 9. SECTION TITLE ── */
@@ -696,7 +818,8 @@ input, textarea {
 }
 
 .gallery-slide.active img {
-  transform: scale(1.08); /* Cinematic slow zoom */
+  transform: scale(1.08);
+  /* Cinematic slow zoom */
 }
 
 .gallery-slide-caption {
@@ -937,7 +1060,9 @@ input, textarea {
   box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.12);
 }
 
-.form-input::placeholder { color: var(--taupe); }
+.form-input::placeholder {
+  color: var(--taupe);
+}
 
 textarea.form-input {
   resize: vertical;
@@ -1067,8 +1192,15 @@ textarea.form-input {
 }
 
 @keyframes confirmReveal {
-  from { opacity: 0; transform: scale(0.85) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .confirm-check-ring {
@@ -1080,16 +1212,23 @@ textarea.form-input {
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px;
-  background: radial-gradient(circle, rgba(201,162,75,0.15), transparent);
+  background: radial-gradient(circle, rgba(201, 162, 75, 0.15), transparent);
   animation: ringGlow 2s ease-in-out infinite;
 }
 
 @keyframes ringGlow {
-  0%,100% { box-shadow: 0 0 20px rgba(201,162,75,0.2); }
-  50%      { box-shadow: 0 0 40px rgba(201,162,75,0.45); }
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 162, 75, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(201, 162, 75, 0.45);
+  }
 }
 
-.confirm-check-ring svg { color: var(--champagne); }
+.confirm-check-ring svg {
+  color: var(--champagne);
+}
 
 .confirm-title {
   font-family: var(--font-display);
@@ -1122,7 +1261,9 @@ textarea.form-input {
   padding: 4px 0;
 }
 
-.confirm-summary strong { color: var(--brass); }
+.confirm-summary strong {
+  color: var(--brass);
+}
 
 .btn-calendar {
   display: inline-flex;
@@ -1170,7 +1311,7 @@ textarea.form-input {
   justify-content: center;
   backdrop-filter: blur(12px);
   transition: var(--transition);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .audio-toggle-btn:hover {
@@ -1181,7 +1322,7 @@ textarea.form-input {
 
 .audio-toggle-btn.playing {
   border-color: var(--brass);
-  box-shadow: 0 0 0 3px rgba(201,162,75,0.15), 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.15), 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .audio-waves {
@@ -1199,21 +1340,41 @@ textarea.form-input {
   opacity: 0.8;
 }
 
-.audio-wave-bar:nth-child(1) { animation-delay: 0s;    animation-duration: 0.9s;  }
-.audio-wave-bar:nth-child(2) { animation-delay: 0.15s; animation-duration: 1.1s;  }
-.audio-wave-bar:nth-child(3) { animation-delay: 0.3s;  animation-duration: 0.85s; }
-.audio-wave-bar:nth-child(4) { animation-delay: 0.45s; animation-duration: 1.05s; }
+.audio-wave-bar:nth-child(1) {
+  animation-delay: 0s;
+  animation-duration: 0.9s;
+}
+
+.audio-wave-bar:nth-child(2) {
+  animation-delay: 0.15s;
+  animation-duration: 1.1s;
+}
+
+.audio-wave-bar:nth-child(3) {
+  animation-delay: 0.3s;
+  animation-duration: 0.85s;
+}
+
+.audio-wave-bar:nth-child(4) {
+  animation-delay: 0.45s;
+  animation-duration: 1.05s;
+}
 
 @keyframes waveAnim {
-  0%,100% { height: 4px;  }
-  50%      { height: 18px; }
+  0%, 100% {
+    height: 4px;
+  }
+
+  50% {
+    height: 18px;
+  }
 }
 
 .audio-label {
   font-size: 11px;
   color: var(--taupe);
   letter-spacing: 0.1em;
-  background: rgba(21,18,15,0.7);
+  background: rgba(21, 18, 15, 0.7);
   padding: 4px 10px;
   border-radius: 20px;
   backdrop-filter: blur(8px);
@@ -1233,10 +1394,21 @@ textarea.form-input {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.35s; }
-.reveal-delay-4 { transition-delay: 0.5s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.35s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.5s;
+}
 
 /* ── 15. FOOTER ── */
 .site-footer {
@@ -1289,15 +1461,21 @@ textarea.form-input {
     gap: 12px;
   }
 
-  .hero-separator { display: none; }
+  .hero-separator {
+    display: none;
+  }
 
   .attend-buttons {
     grid-template-columns: 1fr;
   }
 
-  .audio-label { display: none; }
+  .audio-label {
+    display: none;
+  }
 
-  .gallery-carousel { aspect-ratio: 3/2; }
+  .gallery-carousel {
+    aspect-ratio: 3/2;
+  }
 
   .wax-seal-wrapper {
     width: 170px;
@@ -1319,18 +1497,30 @@ textarea.form-input {
     height: 132px;
   }
 
-  .seal-initials { font-size: 24px; }
+  .seal-initials {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 480px) {
-  body { font-size: 16px; }
+  body {
+    font-size: 16px;
+  }
 
-  .rsvp-card { padding: 24px 18px; }
+  .rsvp-card {
+    padding: 24px 18px;
+  }
 }
 
 /* ── 17. SCROLLBAR ── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--noir); }
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--noir);
+}
+
 ::-webkit-scrollbar-thumb {
   background: var(--brass-dim);
   border-radius: 2px;
@@ -1341,26 +1531,69 @@ textarea.form-input {
   background: rgba(201, 162, 75, 0.25);
   color: var(--champagne);
 }
+
 /* -- GUESTBOOK & LOADING -- */
-.guestbook-section { background: var(--noir); }
+.guestbook-section {
+  background: var(--noir);
+}
+
 .guestbook-container {
-  max-width: 600px; margin: 0 auto;
-  max-height: 400px; overflow-y: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  max-height: 400px;
+  overflow-y: auto;
   padding-right: 12px;
 }
+
 .wish-card {
-  background: rgba(255, 255, 255, 0.03); border: var(--border-gold);
-  border-radius: var(--radius); padding: 20px; margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border-gold);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
 }
-.wish-name { color: var(--champagne); font-family: var(--font-display); font-size: 18px; margin-bottom: 8px; }
-.wish-message { color: var(--ivory-dim); font-size: 14px; font-style: italic; line-height: 1.6; }
-.wishes-empty { text-align: center; color: var(--taupe); padding: 40px; border: 1px dashed var(--brass-dim); border-radius: var(--radius); }
+
+.wish-name {
+  color: var(--champagne);
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.wish-message {
+  color: var(--ivory-dim);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.wishes-empty {
+  text-align: center;
+  color: var(--taupe);
+  padding: 40px;
+  border: 1px dashed var(--brass-dim);
+  border-radius: var(--radius);
+}
+
 .loading-screen {
-  position: fixed; inset: 0; background: var(--noir); display: flex; align-items: center; justify-content: center; z-index: 9999;
+  position: fixed;
+  inset: 0;
+  background: var(--noir);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
+
 .spinner {
-  width: 40px; height: 40px; border: 3px solid rgba(201, 162, 75, 0.2); border-top-color: var(--brass); border-radius: 50%; animation: spin 1s linear infinite;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(201, 162, 75, 0.2);
+  border-top-color: var(--brass);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
+
 /* -- VIDEO BACKGROUND -- */
 .video-background-container {
   position: fixed;
@@ -1370,19 +1603,30 @@ textarea.form-input {
   height: 100vh;
   z-index: -2;
   overflow: hidden;
+  inset: 0;
+  pointer-events: none;
 }
+
 .video-background {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .video-overlay {
   position: absolute;
   inset: 0;
   background: rgba(21, 18, 15, 0.7);
 }
-.rsvp-section { background: rgba(21, 18, 15, 0.4); }
-.guestbook-section { background: rgba(21, 18, 15, 0.8); }
+
+.rsvp-section {
+  background: rgba(21, 18, 15, 0.4);
+}
+
+.guestbook-section {
+  background: rgba(21, 18, 15, 0.8);
+}
+
 /* -- 15. BALINESE ORNAMENT -- */
 .balinese-ornament {
   position: fixed;
@@ -1407,13 +1651,23 @@ textarea.form-input {
 }
 
 @keyframes floatOrnamentLeft {
-  0% { transform: translateY(-10px); }
-  100% { transform: translateY(10px); }
+  0% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(10px);
+  }
 }
 
 @keyframes floatOrnamentRight {
-  0% { transform: scaleX(-1) translateY(10px); }
-  100% { transform: scaleX(-1) translateY(-10px); }
+  0% {
+    transform: scaleX(-1) translateY(10px);
+  }
+
+  100% {
+    transform: scaleX(-1) translateY(-10px);
+  }
 }
 
 @media (max-width: 768px) {
@@ -1421,35 +1675,75 @@ textarea.form-input {
     width: 20px;
     opacity: 0.35;
   }
-  .balinese-ornament.left { left: 4px; }
-  .balinese-ornament.right { right: 4px; }
+
+  .balinese-ornament.left {
+    left: 4px;
+  }
+
+  .balinese-ornament.right {
+    right: 4px;
+  }
 }
-/* -- YOUTUBE BACKGROUND -- */
-.youtube-bg {
+
+/* Hide initial load flash by fading it in slowly */
+.video-background-container {
+  opacity: 0;
+  animation: bgFadeIn 1s ease-in 1.5s forwards;
+}
+
+@keyframes bgFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Native Video Background */
+.video-background-native {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Google Drive Video Background */
+.drive-video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 
+  Vertical (9:16) video filling a horizontal (16:9) screen:
+  - Set width = 100vw
+  - Height must be 100vw * (16/9) to maintain aspect ratio = 177.78vw
+  - This makes iframe MUCH taller than viewport, so Drive control bar
+    at the bottom of the iframe is pushed far below visible area
+  - overflow:hidden on wrapper clips it cleanly
+*/
+.drive-video-iframe {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.3); /* Scale slightly to hide edges/branding */
+  width: 100vw;
+  height: 177.78vw;   /* 100vw * 16/9 — fills width, crops top/bottom */
+  transform: translate(-50%, -50%);
+  border: none;
   pointer-events: none;
 }
 
-@media (min-aspect-ratio: 16/9) {
-  .youtube-bg {
-    width: 100vw;
-    height: 56.25vw;
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .youtube-bg {
-    width: 177.78vh;
-    height: 100vh;
-  }
-}
-
-/* Vertical video specific scaling */
-@media (min-aspect-ratio: 1/1) {
-  .youtube-vertical {
-    transform: translate(-50%, -50%) scale(3.2); /* Massive zoom to fit vertical 9:16 video into horizontal 16:9 screen */
-  }
+/* Shield covers entire iframe area — blocks all Drive UI clicks */
+.drive-video-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: transparent;
+  pointer-events: all;
+  cursor: default;
 }

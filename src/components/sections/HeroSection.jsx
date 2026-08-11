@@ -33,29 +33,14 @@ export default function HeroSection() {
         </p>
 
         {/* Restaurant Logo */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '32px 0' }}>
           <img 
             src="/logo/Logo Dengan Buaya (1).png" 
             alt={eventData.restaurantName} 
             className="hero-restaurant-name"
-            style={{ width: '100%', maxWidth: '350px', height: 'auto' }} 
+            style={{ width: '100%', maxWidth: '400px', height: 'auto' }} 
           />
         </div>
-
-        <GoldDivider />
-
-        {/* Anniversary year display */}
-        <div className="hero-year-block" aria-label={`${eventData.years} tahun anniversary`}>
-          <div className="hero-year-line" aria-hidden="true" />
-          <span className="hero-year-number font-display">
-            {eventData.romanNumeral}
-          </span>
-          <div className="hero-year-line" aria-hidden="true" />
-        </div>
-
-        <p className="hero-year-label">
-          {eventData.tagline}
-        </p>
 
         <GoldDivider />
 

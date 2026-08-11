@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, useSearchParams } from 'react-router-dom'
 import OpeningScreen      from './components/OpeningScreen'
 import BackgroundMusic    from './components/BackgroundMusic'
@@ -28,45 +28,42 @@ function SiteFooter() {
 /* Video Background */
 function VideoBackground() {
   const driveId = eventData.backgroundDriveId;
-  const youtubeId = eventData.backgroundYoutubeId;
-  const ytFormat = eventData.youtubeVideoFormat || 'horizontal';
-  const ytClass = `youtube-bg ${ytFormat === 'vertical' ? 'youtube-vertical' : ''}`;
 
-  if (youtubeId) {
+  if (driveId) {
     return (
       <div className="video-background-container" aria-hidden="true">
-        <iframe
-          className={ytClass}
-          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${youtubeId}&playsinline=1`}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          title="Background Video"
-        ></iframe>
+        <div className="drive-video-wrapper">
+          <iframe
+            src={`https://drive.google.com/file/d/${driveId}/preview?autoplay=1&mute=1`}
+            className="drive-video-iframe"
+            allow="autoplay; encrypted-media"
+            allowFullScreen={false}
+            frameBorder="0"
+            title="Background Video"
+          />
+          {/* Covers entire Drive UI — play button, controls, title bar */}
+          <div className="drive-video-shield" />
+        </div>
         <div className="video-overlay" />
       </div>
     );
   }
 
-  const videoSrc = driveId 
-    ? `https://drive.google.com/uc?export=download&id=${driveId}`
-    : "/video/video untuk undangan.mp4";
-
+  // Fallback: local MP4
   return (
     <div className="video-background-container" aria-hidden="true">
       <video
-        key={videoSrc}
         autoPlay
         loop
         muted
         playsInline
-        className="video-background"
+        className="video-background-native"
       >
-        <source src={videoSrc} type="video/mp4" />
+        <source src="/video/video untuk undangan.mp4" type="video/mp4" />
       </video>
       <div className="video-overlay" />
     </div>
-  )
+  );
 }
 
 /* Main content — hook runs here so IntersectionObserver sees the DOM elements */
@@ -139,13 +136,14 @@ function InvitationPage() {
 
   return (
     <>
-      {/* Opening screen — kept in DOM until content is ready */}
+      <VideoBackground />
+
+      {/* Opening Screen (Wax Seal) */}
       {!showContent && <OpeningScreen onOpen={handleOpen} guestName={displayName} />}
 
       {/* Invitation content */}
       {showContent && (
         <>
-          <VideoBackground />
           <BalineseOrnament position="left" />
           <BalineseOrnament position="right" />
           <MainContent guestId={guestId} guestInfo={guestInfo} wishes={wishes} />

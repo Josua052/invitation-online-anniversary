@@ -109,7 +109,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
           <GoldDivider />
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             Kami sangat mengharapkan kehadiran Anda. Mohon konfirmasi paling lambat{' '}
-            <strong style={{ color: 'var(--brass)' }}>13 September 2026</strong>.
+            <strong style={{ color: 'var(--brass)' }}>25 September 2026</strong>.
           </p>
         </div>
 
