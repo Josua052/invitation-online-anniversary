@@ -3,14 +3,14 @@ import GoldDivider from '../GoldDivider';
 
 export default function GuestbookSection({ wishes }) {
   return (
-    <section id="guestbook" className="section guestbook-section" aria-label="Buku Tamu">
+    <section id="guestbook" className="section guestbook-section" aria-label="Guestbook">
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '40px' }} className="reveal">
-          <p className="section-label">Pesan & Doa</p>
-          <h2 className="section-title">Buku Tamu</h2>
+          <p className="section-label">Messages & Wishes</p>
+          <h2 className="section-title">Guestbook</h2>
           <GoldDivider />
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Terima kasih atas doa dan harapan baik Anda untuk perayaan ini.
+            Thank you for your wishes and blessings for this celebration.
           </p>
         </div>
 
@@ -26,7 +26,7 @@ export default function GuestbookSection({ wishes }) {
             </div>
           ) : (
             <div className="wishes-empty">
-              <p>Belum ada pesan yang masuk. Jadilah yang pertama memberikan doa!</p>
+              <p>No messages yet. Be the first to leave a wish!</p>
             </div>
           )}
         </div>

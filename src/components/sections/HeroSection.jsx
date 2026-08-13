@@ -134,11 +134,11 @@ export default function HeroSection() {
 
         {/* Restaurant Logo */}
         <div className="hero-logo-wrapper">
-          <img
-            src="/logo/Logo Dengan Buaya (1).png"
-            alt={eventData.restaurantName}
-            className="hero-logo-img"
-          />
+          <img 
+          src="/poster/Poster57 Anniversary_opt.webp" 
+          alt="Made's Warung Poster" 
+          className="hero-logo-img"
+        />
         </div>
 
 
@@ -150,8 +150,8 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <a href="#acara" className="hero-scroll-hint" aria-label="Gulir ke bawah">
-        <span>Gulir ke bawah</span>
+      <a href="#acara" className="hero-scroll-hint" aria-label="Scroll down">
+        <span>Scroll down</span>
         <IconChevronDown size={16} stroke={2} />
       </a>
 

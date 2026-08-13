@@ -1,20 +1,20 @@
 {
   "fields": {
-    "nameLabel": "Nama Anda",
-    "namePlaceholder": "Tulis nama lengkap Anda",
-    "guestLabel": "Jumlah Tamu",
-    "attendLabel": "Hadir",
-    "notAttendLabel": "Tidak Bisa Hadir",
-    "messageLabel": "Kirim Ucapan",
-    "messagePlaceholder": "Tuliskan ucapan selamat atau doa untuk La Maison Dorée (opsional)...",
-    "submitLabel": "Kirim RSVP",
-    "submittingLabel": "Mengirim..."
+    "nameLabel": "Your Name",
+    "namePlaceholder": "Write your full name",
+    "guestLabel": "Number of Guests",
+    "attendLabel": "Attending",
+    "notAttendLabel": "Not Attending",
+    "messageLabel": "Send a Message",
+    "messagePlaceholder": "Write your greetings or wishes for Made's Warung (optional)...",
+    "submitLabel": "Send RSVP",
+    "submittingLabel": "Sending..."
   },
   "confirmation": {
-    "title": "Terima Kasih!",
-    "messageAttend": "Kami sangat senang menyambut Anda. Sampai jumpa di malam perayaan yang tak terlupakan.",
-    "messageNotAttend": "Terima kasih atas konfirmasi Anda. Kami sangat menghargai kehadiran hati Anda meski tidak bisa bersama kami.",
-    "calendarLabel": "Tambah ke Kalender",
-    "calendarUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=La+Maison+Dor%C3%A9e+10th+Anniversary&dates=20260920T120000Z/20260920T150000Z&details=Anniversary+Dinner+La+Maison+Dor%C3%A9e&location=Grand+Ballroom+Dharmawangsa+Jakarta"
+    "title": "Thank You!",
+    "messageAttend": "We are thrilled to welcome you. See you at our unforgettable anniversary celebration.",
+    "messageNotAttend": "Thank you for your confirmation. We appreciate your wishes even though you can't join us.",
+    "calendarLabel": "Add to Calendar",
+    "calendarUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Made%27s+Warung+57th+Anniversary&dates=20260828T100000Z/20260828T160000Z&details=Anniversary+Party+at+Made%27s+Warung&location=Made%27s+Warung+Seminyak"
   }
 }

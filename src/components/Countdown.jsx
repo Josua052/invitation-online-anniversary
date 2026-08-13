@@ -35,22 +35,28 @@ export default function Countdown() {
     <div className="countdown-container" aria-label="Hitung mundur menuju acara">
       <div className="countdown-item">
         <span className="countdown-value font-display">{timeLeft.hari}</span>
-        <span className="countdown-label">Hari</span>
+        <span className="countdown-label">Days</span>
       </div>
-      <span className="countdown-separator">:</span>
+
+      <span className="countdown-separator" aria-hidden="true">:</span>
+
       <div className="countdown-item">
         <span className="countdown-value font-display">{String(timeLeft.jam).padStart(2, '0')}</span>
-        <span className="countdown-label">Jam</span>
+        <span className="countdown-label">Hours</span>
       </div>
-      <span className="countdown-separator">:</span>
+
+      <span className="countdown-separator" aria-hidden="true">:</span>
+
       <div className="countdown-item">
         <span className="countdown-value font-display">{String(timeLeft.menit).padStart(2, '0')}</span>
-        <span className="countdown-label">Menit</span>
+        <span className="countdown-label">Minutes</span>
       </div>
-      <span className="countdown-separator">:</span>
+
+      <span className="countdown-separator" aria-hidden="true">:</span>
+
       <div className="countdown-item">
         <span className="countdown-value font-display">{String(timeLeft.detik).padStart(2, '0')}</span>
-        <span className="countdown-label">Detik</span>
+        <span className="countdown-label">Seconds</span>
       </div>
     </div>
   );

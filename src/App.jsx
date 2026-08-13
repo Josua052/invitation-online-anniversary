@@ -19,7 +19,7 @@ function SiteFooter() {
     <footer className="site-footer" role="contentinfo">
       <img src="/logo/Logo Dengan Buaya (1).png" alt={eventData.restaurantName} className="footer-logo" />
       <p className="footer-note">
-        © {new Date().getFullYear()} — Undangan Digital Anniversary ke-{eventData.years} Tahun
+        © {new Date().getFullYear()} — {eventData.years}th Anniversary Digital Invitation
       </p>
     </footer>
   )
@@ -108,8 +108,8 @@ function InvitationPage() {
   }
 
   // Use the name from the URL immediately so there's no loading delay.
-  // If not in URL, fallback to the one from GAS, or 'Tamu Undangan'.
-  const displayName = guestNameParam || (guestInfo ? guestInfo.name : 'Tamu Undangan')
+  // If not in URL, fallback to the one from GAS, or 'Honored Guest'.
+  const displayName = guestNameParam || (guestInfo ? guestInfo.name : 'Honored Guest')
 
   return (
     <>

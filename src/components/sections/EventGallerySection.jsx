@@ -5,6 +5,7 @@ import {
   IconMapPin,
   IconChevronLeft,
   IconChevronRight,
+  IconInfoCircle
 } from '@tabler/icons-react'
 import GoldDivider from '../GoldDivider'
 import eventData  from '../../data/event.json'
@@ -24,13 +25,13 @@ export default function EventGallerySection() {
   }, [total])
 
   return (
-    <section id="acara" className="section event-gallery-section" aria-label="Tentang acara dan galeri">
+    <section id="acara" className="section event-gallery-section" aria-label="About event and gallery">
       <div className="section-inner">
         <div className="event-gallery-grid">
 
           {/* ── Left: Event Info ── */}
           <div>
-            <p className="section-label reveal">Tentang Acara</p>
+            <p className="section-label reveal">About The Event</p>
             <h2 className="section-title reveal reveal-delay-1">
               {eventData.welcomeTitle}
             </h2>
@@ -45,14 +46,14 @@ export default function EventGallerySection() {
                 : <p>{eventData.welcomeMessage}</p>}
             </div>
 
-            <ul className="event-details-list" aria-label="Detail acara">
+            <ul className="event-details-list" aria-label="Event details">
 
               <li className="event-detail-item reveal reveal-delay-2">
                 <div className="event-detail-icon" aria-hidden="true">
                   <IconCalendarEvent size={20} stroke={1.5} />
                 </div>
                 <div className="event-detail-content">
-                  <strong>Tanggal</strong>
+                  <strong>Date</strong>
                   <span>{eventData.date}</span>
                 </div>
               </li>
@@ -62,7 +63,7 @@ export default function EventGallerySection() {
                   <IconClock size={20} stroke={1.5} />
                 </div>
                 <div className="event-detail-content">
-                  <strong>Waktu</strong>
+                  <strong>Time</strong>
                   <span>{eventData.time}</span>
                 </div>
               </li>
@@ -72,8 +73,18 @@ export default function EventGallerySection() {
                   <IconMapPin size={20} stroke={1.5} />
                 </div>
                 <div className="event-detail-content">
-                  <strong>Tempat</strong>
+                  <strong>Venue</strong>
                   <span>{venueData.name}</span>
+                </div>
+              </li>
+
+              <li className="event-detail-item reveal reveal-delay-5">
+                <div className="event-detail-icon" aria-hidden="true">
+                  <IconInfoCircle size={20} stroke={1.5} />
+                </div>
+                <div className="event-detail-content">
+                  <strong>Info</strong>
+                  <span>Include Free Buffet Dinner and Water</span>
                 </div>
               </li>
 
@@ -81,8 +92,8 @@ export default function EventGallerySection() {
           </div>
 
           {/* ── Right: Gallery Carousel ── */}
-          <div className="reveal reveal-delay-2" aria-label="Galeri foto">
-            <div className="gallery-carousel" role="region" aria-label="Carousel galeri foto">
+          <div className="reveal reveal-delay-2" aria-label="Photo gallery">
+            <div className="gallery-carousel" role="region" aria-label="Photo gallery carousel">
 
               {/* Slides track */}
               <div className="gallery-track" aria-live="polite">

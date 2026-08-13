@@ -1145,8 +1145,9 @@ input, textarea {
 .event-details-list {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px 20px;
   margin-top: 28px;
 }
 
@@ -1154,6 +1155,8 @@ input, textarea {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  flex: 1 1 calc(50% - 20px);
+  min-width: 200px;
 }
 
 .event-detail-icon {
@@ -1845,6 +1848,14 @@ textarea.form-input {
   .event-gallery-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .event-details-list {
+    flex-direction: column;
+  }
+
+  .event-detail-item {
+    flex: 1 1 100%;
   }
 
   .venue-dresscode-grid {

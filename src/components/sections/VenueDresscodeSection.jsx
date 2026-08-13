@@ -6,13 +6,13 @@ import dresscodeData from '../../data/dresscode.json'
 export default function VenueDresscodeSection() {
 
   return (
-    <section id="venue" className="section venue-dresscode-section" aria-label="Venue dan dresscode">
+    <section id="venue" className="section venue-dresscode-section" aria-label="Venue and dress code">
       <div className="section-inner">
         <div className="venue-dresscode-grid">
 
           {/* ── Venue ── */}
-          <div className="reveal">
-            <p className="section-label">Lokasi Acara</p>
+          <div className="venue-card reveal">
+            <p className="section-label">Event Location</p>
             <GoldDivider />
 
             <div className="venue-card">
@@ -27,7 +27,7 @@ export default function VenueDresscodeSection() {
               <div id="venue-map-view" className="venue-map-container" role="tabpanel">
                 <iframe
                   src={venueData.mapsEmbed}
-                  title="Peta lokasi venue"
+                  title="Venue map location"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
@@ -41,17 +41,17 @@ export default function VenueDresscodeSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-maps"
-                aria-label="Buka di Google Maps (tab baru)"
+                aria-label="Open in Google Maps (new tab)"
               >
                 <IconExternalLink size={18} stroke={1.5} aria-hidden="true" />
-                Buka di Google Maps
+                Open in Google Maps
               </a>
             </div>
           </div>
 
           {/* ── Dresscode ── */}
-          <div className="reveal reveal-delay-2">
-            <p className="section-label">Dresscode</p>
+          <div className="dresscode-wrapper reveal reveal-delay-2">
+            <p className="section-label">Dress Code</p>
             <GoldDivider />
 
             <div className="dresscode-card">
@@ -66,7 +66,7 @@ export default function VenueDresscodeSection() {
               </p>
 
               {/* Color swatches */}
-              <div className="dresscode-swatches" role="list" aria-label="Palet warna dresscode">
+              <div className="dresscode-swatches" role="list" aria-label="Dress code color palette">
                 {dresscodeData.swatches.map((swatch) => (
                   <div
                     key={swatch.name}

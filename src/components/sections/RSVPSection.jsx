@@ -40,7 +40,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (form.attending === null) {
-      setError('Mohon konfirmasi kehadiran Anda.')
+      setError('Please confirm your attendance.')
       return
     }
     setError('')
@@ -51,9 +51,9 @@ export default function RSVPSection({ guestId, guestInfo }) {
     const now = new Date()
     const isLate = now >= deadline
 
-    let statusText = form.attending ? 'Hadir' : 'Tidak Bisa Hadir'
+    let statusText = form.attending ? 'Attending' : 'Not Attending'
     if (isLate) {
-      statusText += ' (Telat)'
+      statusText += ' (Late)'
     }
 
     const payload = {
@@ -91,7 +91,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
       setSubmitted(true)
     } catch (err) {
       console.error('Error submitting RSVP:', err)
-      setError('Terjadi kesalahan saat mengirim RSVP: ' + err.message)
+      setError('An error occurred while submitting RSVP: ' + err.message)
       setLoading(false)
     }
   }
@@ -104,12 +104,12 @@ export default function RSVPSection({ guestId, guestInfo }) {
       <div className="section-inner">
 
         <div style={{ textAlign: 'center', marginBottom: '40px' }} className="reveal">
-          <p className="section-label">Konfirmasi Kehadiran</p>
+          <p className="section-label">Attendance Confirmation</p>
           <h2 className="section-title">RSVP</h2>
           <GoldDivider />
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Kami sangat mengharapkan kehadiran Anda. Mohon konfirmasi paling lambat{' '}
-            <strong style={{ color: 'var(--brass)' }}>25 September 2026</strong>.
+            We look forward to celebrating with you. Please RSVP by{' '}
+            <strong style={{ color: 'var(--brass)' }}>25 August 2026</strong>.
           </p>
         </div>
 
@@ -130,22 +130,22 @@ export default function RSVPSection({ guestId, guestInfo }) {
 
               <GoldDivider />
 
-              <div className="confirm-summary" aria-label="Ringkasan RSVP Anda">
-                <p><strong>Nama:</strong> {guestInfo ? guestInfo.name : 'Tamu'}</p>
-                <p><strong>Jumlah Tamu:</strong> {form.guests} orang</p>
-                <p><strong>Kehadiran:</strong> {form.attending ? '✓ Hadir' : '✕ Tidak Bisa Hadir'}</p>
+              <div className="confirm-summary" aria-label="Your RSVP Summary">
+                <p><strong>Name:</strong> {guestInfo ? guestInfo.name : 'Guest'}</p>
+                <p><strong>Guests:</strong> {form.guests} person(s)</p>
+                <p><strong>Attendance:</strong> {form.attending ? '✓ Attending' : '✕ Not Attending'}</p>
                 {form.message && (
-                  <p><strong>Ucapan:</strong> {form.message}</p>
+                  <p><strong>Message:</strong> {form.message}</p>
                 )}
               </div>
 
               {form.attending && guestId && (
                 <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
-                  <p style={{ marginBottom: '1rem', color: 'var(--brass)', fontWeight: 'bold' }}>Tunjukkan Tiket (QR Code) ini saat tiba di lokasi acara:</p>
+                  <p style={{ marginBottom: '1rem', color: 'var(--brass)', fontWeight: 'bold' }}>Please show this Ticket (QR Code) upon arrival at the venue:</p>
                   <div style={{ background: 'white', padding: '16px', display: 'inline-block', borderRadius: '8px' }}>
                     <QRCode value={`${GAS_URL}?action=scan&id=${guestId}`} size={150} />
                   </div>
-                  <p style={{ fontSize: '0.8rem', marginTop: '1rem', color: 'rgba(244,236,221,0.6)' }}>Mohon screenshot layar ini.</p>
+                  <p style={{ fontSize: '0.8rem', marginTop: '1rem', color: 'rgba(244,236,221,0.6)' }}>Please screenshot this screen.</p>
                 </div>
               )}
 
@@ -156,7 +156,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-calendar"
-                  aria-label="Tambahkan acara ke Google Calendar"
+                  aria-label="Add event to Google Calendar"
                 >
                   <IconCalendarPlus size={18} stroke={1.5} aria-hidden="true" />
                   {confirmation.calendarLabel}
@@ -171,7 +171,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
               className="rsvp-form"
               onSubmit={handleSubmit}
               noValidate
-              aria-label="Formulir konfirmasi kehadiran"
+              aria-label="Attendance confirmation form"
             >
               {/* Name (Removed from input, passed as hidden payload) */}
 
@@ -186,7 +186,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
                     type="button"
                     className="stepper-btn"
                     onClick={decrementGuests}
-                    aria-label="Kurangi jumlah tamu"
+                    aria-label="Decrease number of guests"
                     disabled={form.guests <= 1}
                   >
                     <IconMinus size={18} stroke={2} />
@@ -194,7 +194,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
                   <span
                     className="stepper-value"
                     aria-live="polite"
-                    aria-label={`${form.guests} orang`}
+                    aria-label={`${form.guests} person(s)`}
                   >
                     {form.guests}
                   </span>
@@ -203,7 +203,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
                     type="button"
                     className="stepper-btn"
                     onClick={incrementGuests}
-                    aria-label="Tambah jumlah tamu"
+                    aria-label="Increase number of guests"
                     disabled={form.guests >= 10}
                   >
                     <IconPlus size={18} stroke={2} />
@@ -213,7 +213,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
 
               {/* Attendance */}
               <div className="form-group">
-                <span className="form-label" id="attend-label">Konfirmasi Kehadiran</span>
+                <span className="form-label" id="attend-label">Attendance Confirmation</span>
                 <div className="attend-buttons" role="group" aria-labelledby="attend-label">
                   <button
                     id="attend-yes-btn"

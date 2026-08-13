@@ -127,8 +127,8 @@ export default function OpeningScreen({ onOpen, guestName }) {
 
           {/* Guest Greeting */}
           <div className="guest-greeting">
-            <p className="guest-honorific">Kepada Yth.</p>
-            <p className="guest-title">Bapak/Ibu/Saudara/i</p>
+            <p className="guest-honorific">Dear</p>
+            <p className="guest-title">Mr/Mrs/Ms</p>
             <h2 className="guest-name">{guestName}</h2>
           </div>
 
@@ -151,10 +151,20 @@ export default function OpeningScreen({ onOpen, guestName }) {
 
             {/* Main seal disc */}
             <div className="wax-seal" aria-hidden="true">
-              <span className="seal-shine" />
-              <span className="seal-fleur">❧</span>
-              <span className="seal-initials">{eventData.sealInitials}</span>
-              <div className="seal-line" />
+              <span className="seal-shine" style={{ zIndex: 2 }} />
+              <img 
+                src="/logo/Design Baju 57 Flower Power_opt.webp" 
+                alt="Anniversary Logo"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  zIndex: 1
+                }}
+              />
             </div>
           </div>
 
