@@ -122,15 +122,7 @@ export default function HeroSection() {
         {/* Top decorative Balinese border */}
         <PepatraanBorder flip={false} />
 
-        {/* Tagline stacked */}
-        <div className="hero-tagline-group">
-          <p className="hero-tagline-text-large">Anniversary</p>
-          <p className="hero-tagline-text-small">ke</p>
-          <p className="hero-tagline-number">57</p>
-        </div>
 
-        {/* Lotus ornament below number */}
-        <LotusOrnament className="lotus-ornament" />
 
         {/* Restaurant Logo */}
         <div className="hero-logo-wrapper">

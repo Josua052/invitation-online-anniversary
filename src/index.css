@@ -884,12 +884,15 @@ input, textarea {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 40px 24px;
+  padding: 8vh 24px 10vh;
   max-width: 800px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 /* ── Pepatraan Border ── */
@@ -913,35 +916,18 @@ input, textarea {
 .hero-logo-wrapper {
   display: flex;
   justify-content: center;
-  margin: 12px 0 32px;
+  margin: 0;
   position: relative;
-}
-
-.hero-logo-wrapper::before,
-.hero-logo-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--brass));
-  opacity: 0.6;
-}
-
-.hero-logo-wrapper::before {
-  right: calc(50% + 210px);
-  background: linear-gradient(to left, transparent, var(--brass));
-}
-
-.hero-logo-wrapper::after {
-  left: calc(50% + 210px);
+  flex: 1;
+  align-items: center;
 }
 
 .hero-logo-img {
-  width: 100%;
-  max-width: 380px;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: 55vh;
+  object-fit: contain;
   filter: drop-shadow(0 0 24px rgba(147, 123, 22, 0.35)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
   transition: filter 0.4s ease;
 }
@@ -952,7 +938,7 @@ input, textarea {
 
 /* ── Countdown wrapper ── */
 .hero-countdown-wrapper {
-  margin-top: 8px;
+  margin-top: 0;
   padding: 16px 32px;
   border: 1px solid rgba(147, 123, 22, 0.25);
   background: rgba(21, 18, 15, 0.45);
@@ -1270,16 +1256,19 @@ input, textarea {
 .event-detail-content strong {
   display: block;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--champagne);
   margin-bottom: 2px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
 .event-detail-content span {
-  font-size: 16px;
-  color: var(--ivory-dim);
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
 }
 
 /* ============================================================
@@ -1289,16 +1278,10 @@ input, textarea {
 
 .gallery-carousel {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: var(--border-gold);
-  background: #0c0a08;
+  background: transparent;
   aspect-ratio: 4 / 3;
-  box-shadow:
-    0 30px 60px -20px rgba(0, 0, 0, 0.55),
-    inset 0 0 60px rgba(0, 0, 0, 0.3);
   isolation: isolate;
-  /* keeps vignette pseudo-element contained */
 }
 
 /* Taller, full-bleed feel on mobile — more immersive on a small screen */
@@ -1321,6 +1304,7 @@ input, textarea {
   opacity: 0;
   visibility: hidden;
   z-index: 1;
+  background: transparent;
   transition:
     opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     visibility 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1335,9 +1319,9 @@ input, textarea {
 .gallery-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   filter: blur(4px) brightness(0.88) saturate(0.92);
-  transform: scale(1.12);
+  transform: scale(1.02);
   transition:
     transform 7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     filter 2.2s ease-out;
@@ -1386,15 +1370,7 @@ input, textarea {
 /* Soft gold-tinted vignette — grounds every photo in the same
    warm, filmic light regardless of the source photo's own tone */
 .gallery-carousel::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background:
-    radial-gradient(120% 90% at 50% 100%, rgba(12, 10, 8, 0.55) 0%, rgba(12, 10, 8, 0) 45%),
-    radial-gradient(140% 100% at 50% 0%, rgba(12, 10, 8, 0.32) 0%, rgba(12, 10, 8, 0) 38%),
-    linear-gradient(180deg, rgba(12, 10, 8, 0.12) 0%, rgba(12, 10, 8, 0) 15%, rgba(12, 10, 8, 0) 75%, rgba(12, 10, 8, 0.5) 100%);
+  content: none;
 }
 
 .gallery-slide-caption {
@@ -1403,9 +1379,10 @@ input, textarea {
   left: 0;
   right: 0;
   padding: 28px 24px 22px;
-  background: linear-gradient(to top, rgba(21, 18, 15, 0.9), rgba(21, 18, 15, 0.35) 55%, transparent);
+  background: transparent;
   font-size: 13px;
   color: var(--ivory-dim);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   z-index: 5;
@@ -2150,9 +2127,27 @@ textarea.form-input {
 .guestbook-container {
   max-width: 600px;
   margin: 0 auto;
-  max-height: 400px;
+  max-height: 450px;
   overflow-y: auto;
-  padding-right: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(147, 123, 22, 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.guestbook-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guestbook-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.guestbook-container::-webkit-scrollbar-thumb {
+  background: var(--brass);
+  border-radius: 4px;
 }
 
 .wish-card {
