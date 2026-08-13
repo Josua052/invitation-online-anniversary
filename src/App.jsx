@@ -36,7 +36,7 @@ function VideoBackground() {
         playsInline
         className="video-background-native"
       >
-        <source src="/video/video untuk undangan (1).mp4" type="video/mp4" />
+        <source src="https://t8jehjfr0zrhjiam.public.blob.vercel-storage.com/bg-video-opt.mp4" type="video/mp4" />
       </video>
       <div className="video-overlay" />
     </div>
