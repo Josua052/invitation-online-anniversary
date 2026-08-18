@@ -27,19 +27,26 @@ function SiteFooter() {
 
 /* Video Background – Local file (web-optimized) */
 function VideoBackground() {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+  }, [])
+
   return (
     <div className="video-background-container" aria-hidden="true">
       <video
+        ref={videoRef}
         className="video-background-native"
+        src="/video/bg-video-final.mp4"
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        onError={(e) => { e.target.style.display = 'none' }}
-      >
-        <source src="/video/bg-video-final.mp4" type="video/mp4" />
-      </video>
+      />
       <div className="video-overlay" />
     </div>
   );
