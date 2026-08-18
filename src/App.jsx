@@ -38,7 +38,7 @@ function VideoBackground() {
         preload="auto"
         onError={(e) => { e.target.style.display = 'none' }}
       >
-        <source src="/video/bg-video-web.mp4" type="video/mp4" />
+        <source src="/video/bg-video-final.mp4" type="video/mp4" />
       </video>
       <div className="video-overlay" />
     </div>

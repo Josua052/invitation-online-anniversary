@@ -7,20 +7,20 @@ import { fileURLToPath } from 'url'
 ffmpeg.setFfmpegPath(ffmpegPath.path)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const inputPath  = path.join(__dirname, 'public', 'video', 'bg-video-opt.mp4')
-const outputPath = path.join(__dirname, 'public', 'video', 'bg-video-web.mp4')
+const inputPath  = path.join(__dirname, 'public', 'video', 'bg-video-web.mp4')
+const outputPath = path.join(__dirname, 'public', 'video', 'bg-video-final.mp4')
 
 console.log('Starting compression...')
 console.log('Input size:', (fs.statSync(inputPath).size / 1024 / 1024).toFixed(2), 'MB')
 
 ffmpeg(inputPath)
   .outputOptions([
-    '-vf', 'scale=640:-2',       // 360p width, maintain ratio
+    '-vf', 'scale=480:-2',       // 270p - very light for bg video
     '-c:v', 'libx264',
-    '-crf', '34',                // High compression
+    '-crf', '36',                // More aggressive compression
     '-preset', 'fast',
-    '-an',                       // Remove audio (bg video needs no audio)
-    '-movflags', '+faststart',   // Stream immediately
+    '-an',
+    '-movflags', '+faststart',
   ])
   .on('start', cmd => console.log('ffmpeg started'))
   .on('progress', p => process.stdout.write(`\rProgress: ${Math.round(p.percent || 0)}%`))
