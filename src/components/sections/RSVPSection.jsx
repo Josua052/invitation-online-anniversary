@@ -96,7 +96,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
     }
   }
 
-  const incrementGuests = () => setForm((f) => ({ ...f, guests: Math.min(f.guests + 1, 10) }))
+  const incrementGuests = () => setForm((f) => ({ ...f, guests: Math.min(f.guests + 1, 2) }))
   const decrementGuests = () => setForm((f) => ({ ...f, guests: Math.max(f.guests - 1, 1) }))
 
   return (
@@ -204,11 +204,14 @@ export default function RSVPSection({ guestId, guestInfo }) {
                     className="stepper-btn"
                     onClick={incrementGuests}
                     aria-label="Increase number of guests"
-                    disabled={form.guests >= 10}
+                    disabled={form.guests >= 2}
                   >
                     <IconPlus size={18} stroke={2} />
                   </button>
                 </div>
+                <p style={{ fontSize: '12px', color: 'rgba(201, 162, 75, 0.7)', marginTop: '8px', textAlign: 'center' }}>
+                  * Maximum 2 guests per invitation
+                </p>
               </div>
 
               {/* Attendance */}

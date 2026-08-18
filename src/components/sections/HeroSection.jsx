@@ -1,4 +1,4 @@
-import { IconChevronDown } from '@tabler/icons-react'
+import { IconChevronDown, IconChevronUp } from '@tabler/icons-react'
 import Countdown from '../Countdown'
 import eventData from '../../data/event.json'
 
@@ -142,9 +142,9 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <a href="#acara" className="hero-scroll-hint" aria-label="Scroll down">
-        <span>Scroll down</span>
-        <IconChevronDown size={16} stroke={2} />
+      <a href="#acara" className="hero-scroll-hint" aria-label="Scroll up">
+        <span>Scroll up</span>
+        <IconChevronUp size={16} stroke={2} />
       </a>
 
     </section>

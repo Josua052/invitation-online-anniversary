@@ -1,35 +1,32 @@
 import ffmpegPath from '@ffmpeg-installer/ffmpeg'
 import ffmpeg from 'fluent-ffmpeg'
 import path from 'path'
+import fs from 'fs'
 import { fileURLToPath } from 'url'
 
 ffmpeg.setFfmpegPath(ffmpegPath.path)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const inputPath = path.join(__dirname, 'public', 'video', 'bg-video.mp4')
-const outputPath = path.join(__dirname, 'public', 'video', 'bg-video-opt.mp4')
+const inputPath  = path.join(__dirname, 'public', 'video', 'bg-video-opt.mp4')
+const outputPath = path.join(__dirname, 'public', 'video', 'bg-video-web.mp4')
 
-console.log('Starting video compression...')
-console.log('Input:', inputPath)
-console.log('Output:', outputPath)
+console.log('Starting compression...')
+console.log('Input size:', (fs.statSync(inputPath).size / 1024 / 1024).toFixed(2), 'MB')
 
 ffmpeg(inputPath)
   .outputOptions([
-    '-vf scale=1280:-2', // 720p height, maintain aspect ratio
-    '-c:v libx264',      // H.264 codec
-    '-crf 28',           // Constant Rate Factor (higher = more compression, 28 is good for background)
-    '-preset faster',    // Encoding speed vs compression ratio
-    '-c:a aac',          // Audio codec
-    '-b:a 128k',         // Audio bitrate
-    '-movflags +faststart' // Move moov atom to beginning for web streaming
+    '-vf', 'scale=640:-2',       // 360p width, maintain ratio
+    '-c:v', 'libx264',
+    '-crf', '34',                // High compression
+    '-preset', 'fast',
+    '-an',                       // Remove audio (bg video needs no audio)
+    '-movflags', '+faststart',   // Stream immediately
   ])
+  .on('start', cmd => console.log('ffmpeg started'))
+  .on('progress', p => process.stdout.write(`\rProgress: ${Math.round(p.percent || 0)}%`))
   .on('end', () => {
-    console.log('Video compression finished successfully!')
+    const sizeMB = (fs.statSync(outputPath).size / 1024 / 1024).toFixed(2)
+    console.log(`\nDone! Output size: ${sizeMB} MB → ${outputPath}`)
   })
-  .on('error', (err) => {
-    console.error('Error during compression:', err)
-  })
-  .on('progress', (progress) => {
-    console.log('Processing: ' + progress.percent + '% done')
-  })
+  .on('error', err => console.error('\nError:', err.message))
   .save(outputPath)

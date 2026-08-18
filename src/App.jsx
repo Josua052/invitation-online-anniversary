@@ -25,18 +25,20 @@ function SiteFooter() {
   )
 }
 
-/* Video Background */
+/* Video Background – Local file (web-optimized) */
 function VideoBackground() {
   return (
     <div className="video-background-container" aria-hidden="true">
       <video
+        className="video-background-native"
         autoPlay
         loop
         muted
         playsInline
-        className="video-background-native"
+        preload="auto"
+        onError={(e) => { e.target.style.display = 'none' }}
       >
-        <source src="https://t8jehjfr0zrhjiam.public.blob.vercel-storage.com/bg-video-opt.mp4" type="video/mp4" />
+        <source src="/video/bg-video-web.mp4" type="video/mp4" />
       </video>
       <div className="video-overlay" />
     </div>
