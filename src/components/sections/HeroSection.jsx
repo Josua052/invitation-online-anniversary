@@ -127,10 +127,10 @@ export default function HeroSection() {
         {/* Restaurant Logo */}
         <div className="hero-logo-wrapper">
           <img 
-          src="/poster/Poster57 Anniversary_opt.webp" 
-          alt="Made's Warung Poster" 
-          className="hero-logo-img"
-        />
+            src="/poster/Poster2_opt.webp" 
+            alt="Made's Warung Poster" 
+            className="hero-logo-img"
+          />
         </div>
 
 
