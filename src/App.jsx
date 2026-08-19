@@ -53,7 +53,7 @@ function VideoBackground() {
 }
 
 /* Main content — hook runs here so IntersectionObserver sees the DOM elements */
-function MainContent({ guestId, guestInfo, wishes }) {
+function MainContent({ guestId, guestInfo, wishes, wishesLoaded }) {
   useScrollAnimation()
   return (
     <main id="main-content" className="main-content" tabIndex={-1}>
@@ -61,7 +61,7 @@ function MainContent({ guestId, guestInfo, wishes }) {
       <EventGallerySection />
       <VenueDresscodeSection />
       <RSVPSection guestId={guestId} guestInfo={guestInfo} />
-      <GuestbookSection wishes={wishes} />
+      <GuestbookSection wishes={wishes} wishesLoaded={wishesLoaded} />
       <SiteFooter />
     </main>
   )
@@ -77,14 +77,16 @@ function InvitationPage() {
   const guestNameParam = searchParams.get('to')
   
   // State for data fetched from GAS
-  const [guestInfo, setGuestInfo] = useState(null)
-  const [wishes, setWishes] = useState([])
+  const [guestInfo, setGuestInfo]     = useState(null)
+  const [wishes, setWishes]           = useState([])
+  const [wishesLoaded, setWishesLoaded] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
       try {
         if (GAS_URL.includes('REPLACE_THIS')) {
-          return // Mock data or skip if URL is invalid
+          setWishesLoaded(true)
+          return
         }
 
         // Fetch guest info if ID is present
@@ -96,17 +98,25 @@ function InvitationPage() {
           }
         }
 
-        // Fetch wishes
-        const wishesRes = await fetch(`${GAS_URL}?action=getWishes`)
+        // Fetch wishes — cache-buster ensures data is always fresh from spreadsheet
+        const wishesRes = await fetch(`${GAS_URL}?action=getWishes&_t=${Date.now()}`)
         const wishesData = await wishesRes.json()
+
+        // Always update wishes state so web stays in sync with spreadsheet.
+        // If spreadsheet is empty, data will be [] → web shows empty state.
         if (wishesData.status === 'success') {
-          setWishes(wishesData.data)
+          setWishes(Array.isArray(wishesData.data) ? wishesData.data : [])
+        } else {
+          setWishes([]) // error or no data → show empty
         }
       } catch (err) {
-        console.error("Failed to fetch initial data", err)
+        console.error('Failed to fetch initial data', err)
+        setWishes([]) // network error → show empty, not stale data
+      } finally {
+        setWishesLoaded(true)
       }
     }
-    
+
     fetchData()
   }, [guestId])
 
@@ -132,7 +142,7 @@ function InvitationPage() {
         <>
           <BalineseOrnament position="left" />
           <BalineseOrnament position="right" />
-          <MainContent guestId={guestId} guestInfo={guestInfo} wishes={wishes} />
+          <MainContent guestId={guestId} guestInfo={guestInfo} wishes={wishes} wishesLoaded={wishesLoaded} />
         </>
       )}
 

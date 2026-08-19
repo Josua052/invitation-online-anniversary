@@ -1,12 +1,12 @@
 import React from 'react';
 import GoldDivider from '../GoldDivider';
 
-export default function GuestbookSection({ wishes }) {
+export default function GuestbookSection({ wishes, wishesLoaded }) {
   return (
     <section id="guestbook" className="section guestbook-section" aria-label="Guestbook">
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '40px' }} className="reveal">
-          <p className="section-label">Messages & Wishes</p>
+          <p className="section-label">Messages &amp; Wishes</p>
           <h2 className="section-title">Guestbook</h2>
           <GoldDivider />
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
@@ -15,7 +15,14 @@ export default function GuestbookSection({ wishes }) {
         </div>
 
         <div className="guestbook-container reveal reveal-delay-1">
-          {wishes && wishes.length > 0 ? (
+          {/* Still loading — show subtle spinner so we don't flash empty state prematurely */}
+          {!wishesLoaded ? (
+            <div className="wishes-empty">
+              <p style={{ opacity: 0.5 }}>Loading messages…</p>
+            </div>
+
+          /* Data loaded & has entries → show wish cards */
+          ) : wishes && wishes.length > 0 ? (
             <div className="wishes-list">
               {wishes.map((wish, index) => (
                 <div key={index} className="wish-card">
@@ -24,6 +31,8 @@ export default function GuestbookSection({ wishes }) {
                 </div>
               ))}
             </div>
+
+          /* Data loaded but spreadsheet is empty → show empty state */
           ) : (
             <div className="wishes-empty">
               <p>No messages yet. Be the first to leave a wish!</p>
