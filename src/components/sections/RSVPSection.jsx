@@ -47,17 +47,20 @@ export default function RSVPSection({ guestId, guestInfo }) {
     setLoading(true)
 
     // Check if late (>= Aug 26, 2026)
-    const deadline = new Date('2026-08-26T00:00:00')
+    // Deadline konfirmasi: 26 Agustus 2026 pukul 00:00 WIB
+    const deadline = new Date('2026-08-26T00:00:00+07:00')
     const now = new Date()
     const isLate = now >= deadline
 
-    let statusText = form.attending ? 'Attending' : 'Not Attending'
-    if (isLate) {
-      statusText += ' (Late)'
+    let statusText
+    if (form.attending) {
+      statusText = isLate ? 'Hadir, Telat Konfirmasi' : 'Hadir'
+    } else {
+      statusText = isLate ? 'Tidak Hadir, Telat Konfirmasi' : 'Tidak Hadir'
     }
 
     const payload = {
-      id: guestId, // Using unique ID now
+      id: guestId,
       statusKehadiran: statusText,
       jumlahTamu: form.guests,
       message: form.message
@@ -109,7 +112,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
           <GoldDivider />
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             We look forward to celebrating with you. Please RSVP by{' '}
-            <strong style={{ color: 'var(--brass)' }}>25 August 2026</strong>.
+            <strong style={{ color: 'var(--brass)' }}>26 August 2026</strong>.
           </p>
         </div>
 

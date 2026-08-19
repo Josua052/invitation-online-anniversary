@@ -938,7 +938,7 @@ input, textarea {
 
 /* ── Countdown wrapper ── */
 .hero-countdown-wrapper {
-  margin-top: 0;
+  margin-top: 24px;
   padding: 16px 32px;
   border: 1px solid rgba(147, 123, 22, 0.25);
   background: rgba(21, 18, 15, 0.45);
