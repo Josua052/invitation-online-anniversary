@@ -1,0 +1,15 @@
+# Apache / cPanel — SPA Fallback for React Router
+# Upload this file to the same folder as your index.html on the server
+
+Options -MultiViews
+RewriteEngine On
+
+# If hosting in a SUBDIRECTORY, uncomment and set the path below:
+# RewriteBase /invitation-online-anniversary-mades-warung/
+
+# Don't rewrite files or directories that exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite everything else to index.html
+RewriteRule ^ index.html [QSA,L]
