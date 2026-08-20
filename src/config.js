@@ -1,1 +1,3 @@
-export const GAS_URL = 'https://script.google.com/macros/s/AKfycbzhEbIE8zXWCJpMzmOymCg1hFpV4bSFnGnSYKAcIewLkU5wJMAiLisiBCFGU4IHvJ0/exec';
+// GAS URL dibaca dari environment variable VITE_GAS_URL
+// Set di file .env (lokal) atau Vercel Dashboard → Settings → Environment Variables
+export const GAS_URL = import.meta.env.VITE_GAS_URL || 'REPLACE_THIS_WITH_YOUR_GAS_URL';
