@@ -39,6 +39,13 @@ export default function RSVPSection({ guestId, guestInfo }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Validasi: harus ada ?id= di URL agar bisa submit ke spreadsheet
+    if (!guestId) {
+      setError('Link undangan Anda tidak memiliki ID. Pastikan Anda membuka link yang benar dari panitia.')
+      return
+    }
+
     if (form.attending === null) {
       setError('Please confirm your attendance.')
       return
@@ -46,7 +53,6 @@ export default function RSVPSection({ guestId, guestInfo }) {
     setError('')
     setLoading(true)
 
-    // Check if late (>= Aug 26, 2026)
     // Deadline konfirmasi: 26 Agustus 2026 pukul 00:00 WIB
     const deadline = new Date('2026-08-26T00:00:00+07:00')
     const now = new Date()
@@ -67,7 +73,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
     }
 
     try {
-      // If URL is not valid or placeholder, simulate success
+      // Jika URL placeholder, simulasi sukses (mode development)
       if (GAS_URL.includes('REPLACE_THIS')) {
         await new Promise(resolve => setTimeout(resolve, 1200))
         setLoading(false)
@@ -77,16 +83,18 @@ export default function RSVPSection({ guestId, guestInfo }) {
 
       const response = await fetch(GAS_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       })
 
       const result = await response.json()
       console.log('GAS Result:', result)
-      
+
       if (result.status === 'error') {
+        // Pesan error spesifik agar mudah dimengerti
+        if (result.message && result.message.includes('ID tidak ditemukan')) {
+          throw new Error(`Kode undangan "${guestId}" tidak ditemukan di sistem. Hubungi panitia.`)
+        }
         throw new Error(result.message)
       }
 
@@ -94,7 +102,11 @@ export default function RSVPSection({ guestId, guestInfo }) {
       setSubmitted(true)
     } catch (err) {
       console.error('Error submitting RSVP:', err)
-      setError('An error occurred while submitting RSVP: ' + err.message)
+      // Jika CORS / network error
+      const msg = err.message.includes('fetch')
+        ? 'Gagal terhubung ke server. Periksa koneksi internet Anda.'
+        : err.message
+      setError(msg)
       setLoading(false)
     }
   }
