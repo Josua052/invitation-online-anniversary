@@ -25,7 +25,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
     if (isAlreadyRSVP) {
       return {
         guests: guestInfo.guests || 1,
-        attending: guestInfo.rsvpStatus.includes('Hadir'),
+        attending: guestInfo.rsvpStatus.startsWith('Hadir'), // startsWith agar 'Tidak Hadir' terdeteksi benar
         message: guestInfo.message || '',
       }
     }
