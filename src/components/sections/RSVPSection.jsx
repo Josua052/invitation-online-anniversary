@@ -53,8 +53,8 @@ export default function RSVPSection({ guestId, guestInfo }) {
     setError('')
     setLoading(true)
 
-    // Deadline konfirmasi: 26 Agustus 2026 pukul 00:00 WIB
-    const deadline = new Date('2026-08-26T00:00:00+07:00')
+    // Deadline konfirmasi: 27 Agustus 2026 hingga pukul 23:59 WIB (berlaku telat mulai 28 Agustus 00:00 WIB)
+    const deadline = new Date('2026-08-28T00:00:00+07:00')
     const now = new Date()
     const isLate = now >= deadline
 
@@ -124,7 +124,7 @@ export default function RSVPSection({ guestId, guestInfo }) {
           <GoldDivider />
           <p className="section-subtitle" style={{ margin: '0 auto' }}>
             We look forward to celebrating with you. Please RSVP by{' '}
-            <strong style={{ color: 'var(--brass)' }}>26 August 2026</strong>.
+            <strong style={{ color: 'var(--brass)' }}>27 August 2026</strong>.
           </p>
         </div>
 
